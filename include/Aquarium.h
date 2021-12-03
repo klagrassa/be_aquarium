@@ -1,34 +1,21 @@
-#ifndef _AQUARIUM_H_
-#define _AQUARIUM_H_
+#ifndef _AQUARIUM_H
+#define _AQUARIUM_H
 
 
-#include <iostream>
-#include <CImg.h>
-
-using namespace std;
-using namespace cimg_library;
-
-
+class Parametres_Sim;
 class Milieu;
 
+class Aquarium {
+  public:
+    Aquarium(const Parametres_Sim & param);
 
-class Aquarium : public CImgDisplay
-{
+    ~Aquarium();
 
-private :
-   Milieu       * flotte;
 
-   int            delay;
+  private:
+    Parametres_Sim * param_sim;
 
-public :
-   Aquarium( int width, int height, int _delay );
-   ~Aquarium( void );
-
-   Milieu & getMilieu( void ) { return *flotte; }
-
-   void run( void );
+    Milieu * milieu;
 
 };
-
-
 #endif
