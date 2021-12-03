@@ -1,30 +1,40 @@
-#include "Milieu.h"
 
-#include <cstdlib>
-#include <ctime>
+#include "../include/Milieu.h"
+#include "../include/Bestiole.h"
+#include "../include/Pondeuse.h"
 
+//Avance la simulation d'un step
+void Milieu::step() {
+}
 
-const T    Milieu::white[] = { (T)255, (T)255, (T)255 };
+//Renvoie les bestioles qui doivent mourir de vieillesse
 
+std::vector<Bestiole*> Milieu::verifier_vieillesse(const Bestiole* & bestioles) {
+    
+}
 
-Milieu::Milieu( int _width, int _height ) : UImg( _width, _height, 1, 3 ),
+//Renvoie les bestioles clon�es. Le clonage ne se fait uniquement que si le taux de clonage de la bestiole est inf�rieur au taux de clonage donn�
+//en param�tre.
+std::vector<Bestiole*> Milieu::verifier_clonage(const Bestiole* & bestioles, double taux_clonage) {
+
+}
+
+Milieu::Milieu( int _width, int _height ): UImg( _width, _height, 1, 3 ),
                                             width(_width), height(_height)
 {
 
-   cout << "const Milieu" << endl;
+   std::cout << "const Milieu" << std::endl;
 
    std::srand( time(NULL) );
 
 }
 
-
 Milieu::~Milieu( void )
 {
 
-   cout << "dest Milieu" << endl;
+   std::cout << "dest Milieu" << std::endl;
 
 }
-
 
 void Milieu::step( void )
 {
