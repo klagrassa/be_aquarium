@@ -9,7 +9,7 @@
 class Bestiole;
 class Pondeuse;
 
-class Milieu {
+class Milieu : public UImg {
   private:
     Pondeuse * pondeuse;
 
@@ -33,7 +33,7 @@ class Milieu {
     
   // ctors and dtors
   public:
-    Milieu();
+    Milieu( int _width, int _height );
     ~Milieu();
   
   // get/set 

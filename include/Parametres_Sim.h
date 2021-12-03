@@ -1,6 +1,7 @@
 #ifndef _PARAMETRES_SIM_H
 #define _PARAMETRES_SIM_H
 
+#include <map>
 
 class Parametres_Sim {
   private:
@@ -18,7 +19,7 @@ class Parametres_Sim {
 
     double limites_nageoires_vitesse[2];
 
-    Parametres_sim* instance = null;
+    Parametres_Sim* instance = nullptr;
 
     double limites_rayon_oreilles[2];
 
@@ -37,6 +38,10 @@ class Parametres_Sim {
     ~Parametres_Sim();
 
     Parametres_Sim();
+
+    int getWidth() const;
+    int getHeight() const;
+    int getDelay() const;
 
 };
 #endif

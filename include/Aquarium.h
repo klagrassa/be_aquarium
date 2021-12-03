@@ -7,6 +7,8 @@
 class Parametres_Sim;
 class Milieu;
 
+using namespace cimg_library;
+
 class Aquarium : public CImgDisplay {
   public:
     Aquarium(const Parametres_Sim & param);
