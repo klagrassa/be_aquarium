@@ -1,8 +1,9 @@
 #ifndef _BESTIOLE_H
 #define _BESTIOLE_H
 
-
+#include "UImg.h"
 #include "IComportement.h"
+#include <vector>
 
 class Capteur;
 class Accessoire;
@@ -10,29 +11,55 @@ class Milieu;
 
 class Bestiole {
   private:
-    <Capteur *> capteurs;
+    std::vector<Capteur *> capteurs;
 
-    <Accessoire *> accessoires;
+    std::vector<Accessoire *> accessoires;
 
-    IComportement comportement;
+    std::vector<IComportement*> comportements;
 
     double taux_clonage;
 
     int age;
 
-    <Bestiole*> bestioles_environnantes;
+    std::vector<Bestiole*> bestioles_environnantes;
+
+   static const double     AFF_SIZE;
+   static const double     MAX_VITESSE;
+   static const double     LIMITE_VUE;
+
+   static int              next;
+
+  private :
+   int               identite;
+   int               x, y;
+   double            cumulX, cumulY;
+   double            orientation;
+   double            vitesse;
+
+   T               * couleur;
 
 
   public:
-    void action(const const Milieu& & milieu);
-
-    Bestiole(const Comportement* & comp, const Accessoire* & acc, const Capteur* & capteurs, const  & ,  );
+    Bestiole(const IComportement* comp, const Accessoire* acc, const Capteur* capteurs); 
 
     ~Bestiole();
 
-    Bestiole clonage(Bestiole & bestiole);
+    void action(const Milieu& milieu);
+
+    Bestiole clonage(const Bestiole & bestiole);
 
     int getAge();
+
+    void draw( UImg & support );
+
+    bool jeTeVois( const Bestiole & b ) const;
+
+    void initCoords( int xLim, int yLim );
+
+    friend bool operator==( const Bestiole & b1, const Bestiole & b2 );
+
+  private :
+    void bouge( int xLim, int yLim );
 
 };
 #endif
