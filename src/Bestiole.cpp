@@ -44,7 +44,8 @@ Bestiole::~Bestiole( void )
 Bestiole Bestiole::clonage(const Bestiole & bestiole) {
 }
 
-int Bestiole::getAge() {
+int Bestiole::getAge() const{
+   return this->age;
 }
 
 

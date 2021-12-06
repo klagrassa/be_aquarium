@@ -1,6 +1,8 @@
 #ifndef _ICOMPORTEMENT_H
 #define _ICOMPORTEMENT_H
 
+#include "Bestiole.h"
+#include <vector>
 
 class IComportement {
 

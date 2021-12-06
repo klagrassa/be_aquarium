@@ -3,12 +3,7 @@
 #include "../include/Bestiole.h"
 #include "../include/Pondeuse.h"
 
-//Avance la simulation d'un step
-void Milieu::step() {
-}
-
 //Renvoie les bestioles qui doivent mourir de vieillesse
-
 std::vector<Bestiole*> Milieu::verifier_vieillesse(const Bestiole* & bestioles) {
     
 }

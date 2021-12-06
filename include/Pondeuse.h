@@ -6,6 +6,7 @@ class Parametres_Sim;
 class Bestiole;
 class Accessoire;
 class Capteur;
+class IComportement;
 
 class Pondeuse {
   private:
@@ -17,7 +18,7 @@ class Pondeuse {
   public:
     Bestiole* creerBestioles(int nb_bestioles);
 
-    Bestiole* creerBestiole(const Comportement* & comportement, const Accessoire* & accessoires, const Capteur* & capteurs);
+    Bestiole* creerBestiole(const IComportement& comportement, const Accessoire& accessoires, const Capteur& capteurs);
 
     Pondeuse();
 

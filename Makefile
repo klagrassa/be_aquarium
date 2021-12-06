@@ -1,6 +1,7 @@
 CXX=g++
 LD=g++
 CXXFLAGS=-Wall -std=c++17 -g
+LDFLAGS=-lX11 -lpthread -lm -I$(INC_DIR)
 
 PRJ_DIR = $(realpath $(CURDIR)/..)
 EXE_DIR = bin
@@ -24,7 +25,7 @@ endef
 all: checkdirs $(EXE_DIR)/app
 
 $(EXE_DIR)/app: $(OBJ)
-	$(LD) $^ -o $@
+	$(LD) $^ -o $@ $(LDFLAGS)
 
 checkdirs: $(BUILD_DIR) $(EXE_DIR)
 

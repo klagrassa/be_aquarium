@@ -9,6 +9,8 @@
 class Bestiole;
 class Pondeuse;
 
+using namespace cimg_library;
+
 class Milieu : public UImg {
   private:
     Pondeuse * pondeuse;
@@ -22,13 +24,13 @@ class Milieu : public UImg {
 
   public:
     //Avance la simulation d'un step
-    void step();   
+    void step(void);   
     
 
     std::vector<Bestiole*> verifier_vieillesse(const Bestiole* & bestioles);
     std::vector<Bestiole*> verifier_clonage(const Bestiole* & bestioles, double taux_clonage);
 
-    void addMember( const Bestiole & b ) { listeBestioles.push_back(b); listeBestioles.back().initCoords(width, height); }
+    void addMember( const Bestiole & b );
     int nbVoisins( const Bestiole & b );
     
   // ctors and dtors

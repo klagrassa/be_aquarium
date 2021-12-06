@@ -11,7 +11,7 @@ class Multiple : public IComportement {
     //Liste des comportements
     vector<IComportement *> listeComposants;
 
-    Comportement* comportement_actuel;
+    IComportement* comportement_actuel;
 
 
   public:
@@ -19,7 +19,7 @@ class Multiple : public IComportement {
 
     Multiple(const IComportement & liste_comportements);
 
-    Multiple(const const Multiple& & m);
+    Multiple(const Multiple & m);
 
 };
 #endif

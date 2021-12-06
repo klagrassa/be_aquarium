@@ -8,7 +8,8 @@
 Bestiole* Pondeuse::creerBestioles(int nb_bestioles) {
 }
 
-Bestiole* Pondeuse::creerBestiole(const Comportement* & comportement, const Accessoire* & accessoires, const Capteur* & capteurs) {
+Bestiole* Pondeuse::creerBestiole(const IComportement& comportement, const Accessoire& accessoires, const Capteur& capteurs) {
+    //return new Bestiole(comportement, accessoires, capteurs);
 }
 
 Pondeuse::Pondeuse() {
