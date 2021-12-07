@@ -3,6 +3,8 @@
 #include "../include/Bestiole.h"
 #include "../include/Pondeuse.h"
 
+const T Milieu::white[] = {255,255,255};
+
 //Renvoie les bestioles qui doivent mourir de vieillesse
 std::vector<Bestiole*> Milieu::verifier_vieillesse(const Bestiole* & bestioles) {
     
@@ -58,4 +60,9 @@ int Milieu::nbVoisins( const Bestiole & b )
 
    return nb;
 
+}
+
+void Milieu::addMember( const Bestiole & b ) { 
+   listeBestioles.push_back(b); 
+   listeBestioles.back().initCoords(width, height);
 }

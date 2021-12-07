@@ -42,16 +42,13 @@ class Bestiole {
     ~Bestiole();
     Bestiole clonage(const Bestiole & bestiole);
 
-  public:
     void action(const Milieu& milieu);
     void draw( UImg & support );
     bool jeTeVois( const Bestiole & b ) const;
     void initCoords( int xLim, int yLim );
 
-  public:
     int getAge() const;
   
-  public:
     friend bool operator==( const Bestiole & b1, const Bestiole & b2 );
   
   private :

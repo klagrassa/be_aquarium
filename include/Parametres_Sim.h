@@ -5,6 +5,10 @@
 
 class Parametres_Sim {
   private:
+    Parametres_Sim(){}
+
+    //Parametres_Sim* instance = nullptr;
+
     int height;
 
     int width;
@@ -18,8 +22,6 @@ class Parametres_Sim {
     double limites_camouflage[2];
 
     double limites_nageoires_vitesse[2];
-
-    Parametres_Sim* instance = nullptr;
 
     double limites_rayon_oreilles[2];
 
@@ -37,11 +39,18 @@ class Parametres_Sim {
   public:
     ~Parametres_Sim();
 
-    Parametres_Sim();
+    static Parametres_Sim& getInstance() {
+      static Parametres_Sim instance;  // sera instancié au premier appel à getInstance()
+      return instance; 
+    }
 
     int getWidth() const;
     int getHeight() const;
     int getDelay() const;
 
+    void setWidth(int w);
+    void setHeight(int h);
+    void setDelay(int d);
 };
+
 #endif

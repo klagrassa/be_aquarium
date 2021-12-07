@@ -30,16 +30,13 @@ class Milieu : public UImg {
     std::vector<Bestiole*> verifier_vieillesse(const Bestiole* & bestioles);
     std::vector<Bestiole*> verifier_clonage(const Bestiole* & bestioles, double taux_clonage);
 
-    void addMember( const Bestiole & b );
     int nbVoisins( const Bestiole & b );
-    
-  // ctors and dtors
-  public:
+
+    void addMember( const Bestiole & b );
+
     Milieu( int _width, int _height );
     ~Milieu();
   
-  // get/set 
-  public: 
     int getWidth( void ) const { return width; };
     int getHeight( void ) const { return height; };
 
