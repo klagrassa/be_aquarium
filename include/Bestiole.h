@@ -39,6 +39,7 @@ class Bestiole {
 
   public:
     Bestiole(const IComportement* comp, const Accessoire* acc, const Capteur* capteurs); 
+    Bestiole( const Bestiole & b );
     ~Bestiole();
     Bestiole clonage(const Bestiole & bestiole);
 

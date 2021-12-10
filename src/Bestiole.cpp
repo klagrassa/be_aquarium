@@ -18,7 +18,7 @@ int               Bestiole::next = 0;
 Bestiole::Bestiole(const IComportement* comp, const Accessoire* acc, const Capteur* capteurs) {
     identite = ++next;
 
-   std::cout << "const Bestiole (" << identite << ") par defaut" << std::endl;
+   std::cout << "const Bestiole (" << identite << ") par defaut" << this <<std::endl;
 
    x = y = 0;
    cumulX = cumulY = 0.;
@@ -31,13 +31,27 @@ Bestiole::Bestiole(const IComportement* comp, const Accessoire* acc, const Capte
    couleur[ 2 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
 }
 
-Bestiole::~Bestiole( void )
+Bestiole::Bestiole( const Bestiole & b )
 {
 
+   identite = ++next;
+
+   std::cout << "const Bestiole (" << identite << ") par copie" << std::endl;
+
+   x = b.x;
+   y = b.y;
+   cumulX = cumulY = 0.;
+   orientation = b.orientation;
+   vitesse = b.vitesse;
+   couleur = new T[ 3 ];
+   memcpy( couleur, b.couleur, 3*sizeof(T) );
+
+}
+
+Bestiole::~Bestiole( void )
+{
+   std::cout << "dest Bestiole" << identite << this << std::endl;
    delete[] couleur;
-
-   std::cout << "dest Bestiole" << std::endl;
-
 }
 
 

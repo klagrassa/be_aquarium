@@ -15,7 +15,7 @@ int main()
    param.setHeight(480);
    param.setDelay(30);
 
-   Aquarium       ecosysteme(param);
+   Aquarium ecosysteme(param);
 
    for ( int i = 1; i <= 20; ++i )
       ecosysteme.getMilieu().addMember( Bestiole(nullptr, nullptr, nullptr) );
