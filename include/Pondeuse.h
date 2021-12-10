@@ -1,6 +1,8 @@
 #ifndef _PONDEUSE_H
 #define _PONDEUSE_H
 
+#include <iostream>
+
 
 class Parametres_Sim;
 class Bestiole;
@@ -12,8 +14,8 @@ class Pondeuse {
 
   // attributes
   private:
-    Parametres_Sim * param_sim;
-    Pondeuse* instance = nullptr;
+    const Parametres_Sim * param_sim;
+    Pondeuse(const Parametres_Sim* p);
 
   // methods
   public:
@@ -21,9 +23,13 @@ class Pondeuse {
     Bestiole* creerBestiole(const IComportement* comportement, const Accessoire* accessoires, const Capteur* capteurs);
 
   // ctors and dtor
-  public:
-    Pondeuse(Parametres_Sim* param);
+    
     ~Pondeuse();
+
+    static Pondeuse& getInstance(const Parametres_Sim* param) {
+      static Pondeuse instance(param);  // sera instancié au premier appel à getInstance()
+      return instance; 
+    }
 
 };
 #endif

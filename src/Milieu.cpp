@@ -6,10 +6,10 @@
 
 const T Milieu::white[] = {255,255,255};
 
-Milieu::Milieu(const Parametres_Sim& p): UImg(p.getWidth(), p.getHeight(), 1, 3 ),
-                                            width(p.getWidth()), height(p.getHeight())
+Milieu::Milieu(const Parametres_Sim* p): UImg(p->getWidth(), p->getHeight(), 1, 3 ),
+                                            width(p->getWidth()), height(p->getHeight())
 {
-   param = &p;
+   param = p;
 
    std::cout << "const Milieu" << std::endl;
 

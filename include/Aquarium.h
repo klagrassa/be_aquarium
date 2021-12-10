@@ -11,7 +11,7 @@ using namespace cimg_library;
 
 class Aquarium : public CImgDisplay {
   public:
-    Aquarium(const Parametres_Sim & param);
+    Aquarium(const Parametres_Sim * param);
 
     ~Aquarium();
 

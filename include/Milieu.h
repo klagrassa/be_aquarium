@@ -14,7 +14,7 @@ using namespace cimg_library;
 
 class Milieu : public UImg {
   private:
-    Milieu(const Parametres_Sim& p);
+    Milieu(const Parametres_Sim* p);
 
     Pondeuse * pondeuse;
     //Milieu* instance = nullptr;
@@ -37,7 +37,7 @@ class Milieu : public UImg {
 
     void addMember( const Bestiole & b );
 
-    static Milieu& getInstance(const Parametres_Sim& param) {
+    static Milieu& getInstance(const Parametres_Sim* param) {
       static Milieu instance(param);  // sera instancié au premier appel à getInstance()
       return instance; 
     }

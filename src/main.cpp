@@ -8,10 +8,10 @@
 
 int main()
 {
-   Parametres_Sim param = Parametres_Sim::getInstance();
-   param.setWidth(640);
-   param.setHeight(480);
-   param.setDelay(30);
+   Parametres_Sim* param = &(Parametres_Sim::getInstance());
+   param->setWidth(640);
+   param->setHeight(480);
+   param->setDelay(30);
 
    Aquarium ecosysteme(param);
 
