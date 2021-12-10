@@ -20,5 +20,16 @@ class Oreilles : public Capteur {
 
     ~Oreilles();
 
+    float getCapaciteDetection( void );
+
+    float getDistanceEcoute( void );
+
+    float getChampsPerception( void );
+
+    void setDistanceEcoute( float de );
+
+    void setChampsPerception( float cp );
+
+    void setCapaciteDetection( float cd );
 };
 #endif

@@ -20,5 +20,17 @@ class Yeux : public Capteur {
 
     ~Yeux();
 
+    getCapaciteDetection( void );
+
+    getDistanceVision( void );
+
+    getAngleVision( void );
+
+    setDistanceVision( float dv );
+
+    setAngleVision( float av );
+
+    setCapacitePerception( float cp);
+
 };
 #endif
