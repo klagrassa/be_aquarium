@@ -19,7 +19,17 @@ class Bestiole {
     std::vector<Accessoire *> accessoires;
     std::vector<IComportement *> comportements;
 
+
     std::vector<Bestiole*> bestioles_environnantes;
+
+private :
+   static const double     AFF_SIZE;
+   static const double     MAX_VITESSE;
+   static const double     LIMITE_VUE_DIST;
+   static const double     LIMITE_VUE_ANGLE;
+   static const double     VUE_CAPACITY;
+   static const double     EARS_CAPACITY;
+
 
     static const double     AFF_SIZE;
     static const double     MAX_VITESSE;
