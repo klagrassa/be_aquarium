@@ -25,8 +25,6 @@ class Bestiole {
 private :
     static const double     AFF_SIZE;
     static const double     MAX_VITESSE;
-    static const double     AFF_SIZE;
-    static const double     MAX_VITESSE;
 
 
     static int              next;
