@@ -1,5 +1,9 @@
 #include "../include/Accessoire.h"
 
-Accessoire::~Accessoire(){
-    
-}
+/**
+ * @brief Destroy the Accessoire:: Accessoire object
+ * 
+ */
+Accessoire::~Accessoire()
+{}
+

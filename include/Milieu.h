@@ -8,14 +8,15 @@
 
 class Bestiole;
 class Pondeuse;
+class Parametres_Sim;
 
 using namespace cimg_library;
 
 class Milieu : public UImg {
   private:
     Pondeuse * pondeuse;
-
     Milieu* instance = nullptr;
+    Parametres_Sim* param;
 
     static const T          white[];
 
