@@ -8,7 +8,6 @@
  *
  */
 class Parametres_Sim {
-
   private:
 
     // window size parameter
