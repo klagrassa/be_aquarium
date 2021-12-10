@@ -3,6 +3,8 @@
 #include "../include/Bestiole.h"
 #include "../include/Pondeuse.h"
 
+const T Milieu::white[] = {255,255,255};
+
 //Renvoie les bestioles qui doivent mourir de vieillesse
 std::vector<Bestiole*> Milieu::verifier_vieillesse(const Bestiole* & bestioles) {
     
@@ -24,23 +26,21 @@ Milieu::Milieu( int _width, int _height ): UImg( _width, _height, 1, 3 ),
 
 }
 
-Milieu::~Milieu( void )
+Milieu::~Milieu()
 {
-
+   delete param;
+   delete pondeuse;
+   delete instance;
    std::cout << "dest Milieu" << std::endl;
-
 }
 
 void Milieu::step( void )
 {
-
    cimg_forXY( *this, x, y ) fillC( x, y, 0, white[0], white[1], white[2] );
    for ( std::vector<Bestiole>::iterator it = listeBestioles.begin() ; it != listeBestioles.end() ; ++it )
    {
-
       it->action( *this );
       it->draw( *this );
-
    } // for
 
 }
@@ -48,14 +48,11 @@ void Milieu::step( void )
 
 int Milieu::nbVoisins( const Bestiole & b )
 {
+   int nb = 0;
 
-   int         nb = 0;
-
-
-   for ( std::vector<Bestiole>::iterator it = listeBestioles.begin() ; it != listeBestioles.end() ; ++it )
-      if ( !(b == *it) && b.jeTeVois(*it) )
+   for (std::vector<Bestiole>::iterator it = listeBestioles.begin(); it != listeBestioles.end(); ++it )
+      if (!(b == *it) && b.jeTeVois(*it))
          ++nb;
 
    return nb;
-
 }

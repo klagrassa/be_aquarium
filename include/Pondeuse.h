@@ -9,19 +9,20 @@ class Capteur;
 class IComportement;
 
 class Pondeuse {
+
+  // attributes
   private:
     Parametres_Sim * param_sim;
-
     Pondeuse* instance = nullptr;
 
-
+  // methods
   public:
     Bestiole* creerBestioles(int nb_bestioles);
+    Bestiole* creerBestiole(const IComportement* comportement, const Accessoire* accessoires, const Capteur* capteurs);
 
-    Bestiole* creerBestiole(const IComportement& comportement, const Accessoire& accessoires, const Capteur& capteurs);
-
-    Pondeuse();
-
+  // ctors and dtor
+  public:
+    Pondeuse(Parametres_Sim* param);
     ~Pondeuse();
 
 };
