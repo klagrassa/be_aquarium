@@ -21,7 +21,7 @@ class Aquarium : public CImgDisplay {
 
 
   private:
-    Parametres_Sim * param_sim;
+    const Parametres_Sim * param_sim;
 
     Milieu * flotte;
     int delay;

@@ -10,8 +10,6 @@
 class Parametres_Sim {
 
   private:
-    Parametres_Sim* instance = nullptr;
-
     // window size parameter
     int height;
     int width;
