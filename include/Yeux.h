@@ -20,5 +20,7 @@ class Yeux : public Capteur {
 
     ~Yeux();
 
+    
+
 };
 #endif

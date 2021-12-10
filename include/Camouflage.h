@@ -16,5 +16,8 @@ class Camouflage : public Accessoire {
 
     ~Camouflage();
 
+    float getCoefficient();
+
+    void setCoefficient(float c);
 };
 #endif

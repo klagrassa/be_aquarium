@@ -6,5 +6,6 @@ class Accessoire {
   public:
     virtual ~Accessoire();
 
+
 };
 #endif

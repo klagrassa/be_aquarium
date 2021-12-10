@@ -16,5 +16,11 @@ class Carapace : public Accessoire {
     Carapace(float protection, float ralentissement);
     ~Carapace();
 
+    float getProtection();
+    void setProtection(float p);
+
+    float getRalentissement();
+    void setRalentissement(float r);
+
 };
 #endif
