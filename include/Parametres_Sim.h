@@ -10,12 +10,7 @@
 class Parametres_Sim {
 
   private:
-
-    Parametres_Sim(){}
-
-    //Parametres_Sim* instance = nullptr;
-
-    int height;
+    Parametres_Sim* instance = nullptr;
 
     // window size parameter
     int height;
@@ -39,25 +34,22 @@ class Parametres_Sim {
 
     std::map<std::string, double> proportions;
 
-  private:
-    ~Parametres_Sim();
+    
     Parametres_Sim();
 
   public:
-    static Parametres_Sim* getParameters();
 
+    ~Parametres_Sim();
+
+    /**
+     * @brief Renvoie un objet unique Parametres_Sim
+     * 
+     * @return Parametres_Sim* singleton
+     */
     static Parametres_Sim& getInstance() {
       static Parametres_Sim instance;  // sera instancié au premier appel à getInstance()
       return instance; 
     }
-
-    // C++11
-    // Le compilateur empêchera l'utilisation de ses fonctions et générera
-    // un meilleur message d'erreur que si ses opérations étaient juste
-    // privées
-    // Cela protègera le singleton des copies
-    Parametres_Sim(const Parametres_Sim&) = delete;
-    void operator=(const Parametres_Sim&) = delete;
 
 
     // get

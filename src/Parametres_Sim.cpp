@@ -2,9 +2,6 @@
 #include "Parametres_Sim.h"
 
 
-// implémentation du singleton
-static Parametres_Sim* instance = nullptr;
-
 /**
  * @brief Construct a new Parametres_Sim::Parametres_Sim object
  * 
@@ -16,21 +13,6 @@ Parametres_Sim::Parametres_Sim() {}
  * 
  */
 Parametres_Sim::~Parametres_Sim() {}
-
-/**
- * @brief Renvoie un objet unique Parametres_Sim
- * 
- * @return Parametres_Sim* singleton
- */
-Parametres_Sim* Parametres_Sim::getParameters()
-{
-    if (instance == nullptr)
-    {
-        instance = new Parametres_Sim();
-        return instance;
-    }
-    else return instance;
-}
 
 // get / set operators
 
