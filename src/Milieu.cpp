@@ -2,8 +2,20 @@
 #include "../include/Milieu.h"
 #include "../include/Bestiole.h"
 #include "../include/Pondeuse.h"
+#include "../include/Parametres_Sim.h"
 
 const T Milieu::white[] = {255,255,255};
+
+Milieu::Milieu(const Parametres_Sim* p): UImg(p->getWidth(), p->getHeight(), 1, 3 ),
+                                            width(p->getWidth()), height(p->getHeight())
+{
+   param = p;
+
+   std::cout << "const Milieu " << this << std::endl;
+
+   std::srand( time(NULL) );
+
+}
 
 //Renvoie les bestioles qui doivent mourir de vieillesse
 std::vector<Bestiole*> Milieu::verifier_vieillesse(const Bestiole* & bestioles) {
@@ -16,21 +28,11 @@ std::vector<Bestiole*> Milieu::verifier_clonage(const Bestiole* & bestioles, dou
 
 }
 
-Milieu::Milieu( int _width, int _height ): UImg( _width, _height, 1, 3 ),
-                                            width(_width), height(_height)
-{
-
-   std::cout << "const Milieu" << std::endl;
-
-   std::srand( time(NULL) );
-
-}
-
 Milieu::~Milieu()
 {
-   delete param;
-   delete pondeuse;
-   delete instance;
+   //delete param;
+   //delete pondeuse;
+   //delete instance;
    std::cout << "dest Milieu" << std::endl;
 }
 
