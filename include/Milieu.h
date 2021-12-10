@@ -1,38 +1,47 @@
-#ifndef _MILIEU_H_
-#define _MILIEU_H_
-
+#ifndef _MILIEU_H
+#define _MILIEU_H
 
 #include "UImg.h"
-#include "Bestiole.h"
 
 #include <iostream>
 #include <vector>
 
-using namespace std;
+class Bestiole;
+class Pondeuse;
 
+using namespace cimg_library;
 
-class Milieu : public UImg
-{
+class Milieu : public UImg {
+  private:
+    Pondeuse * pondeuse;
 
-private :
-   static const T          white[];
+    Milieu* instance = nullptr;
 
-   int                     width, height;
-   std::vector<Bestiole>   listeBestioles;
+    static const T          white[];
 
-public :
-   Milieu( int _width, int _height );
-   ~Milieu( void );
+    int                     width, height;
+    std::vector<Bestiole>   listeBestioles;
 
-   int getWidth( void ) const { return width; };
-   int getHeight( void ) const { return height; };
+  public:
+    //Avance la simulation d'un step
+    void step(void);   
+    
 
-   void step( void );
+    std::vector<Bestiole*> verifier_vieillesse(const Bestiole* & bestioles);
+    std::vector<Bestiole*> verifier_clonage(const Bestiole* & bestioles, double taux_clonage);
 
-   void addMember( const Bestiole & b ) { listeBestioles.push_back(b); listeBestioles.back().initCoords(width, height); }
-   int nbVoisins( const Bestiole & b );
+    void addMember( const Bestiole & b );
+    int nbVoisins( const Bestiole & b );
+    
+  // ctors and dtors
+  public:
+    Milieu( int _width, int _height );
+    ~Milieu();
+  
+  // get/set 
+  public: 
+    int getWidth( void ) const { return width; };
+    int getHeight( void ) const { return height; };
 
 };
-
-
 #endif

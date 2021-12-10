@@ -1,14 +1,42 @@
-main : main.cpp Aquarium.o Bestiole.o Milieu.o
-	g++ -Wall -std=c++11 -o main main.cpp Aquarium.o Bestiole.o Milieu.o -I . -lX11 -lpthread
+CXX=g++
+LD=g++
+CXXFLAGS=-Wall -std=c++17 -g
+LDFLAGS=-lX11 -lpthread -lm -I$(INC_DIR)
 
-Aquarium.o : Aquarium.h Aquarium.cpp
-	g++ -Wall -std=c++11  -c Aquarium.cpp -I .
+PRJ_DIR = $(realpath $(CURDIR)/..)
+EXE_DIR = bin
+SRC_DIR = src
+INC_DIR = include
+BUILD_DIR= build
 
-Bestiole.o : Bestiole.h Bestiole.cpp
-	g++ -Wall -std=c++11  -c Bestiole.cpp -I .
+SRC=$(wildcard $(SRC_DIR)/*.cpp)
+OBJ:= $(patsubst src/%.cpp,build/%.o,$(SRC))
+INCLUDES=$(addprefix -I,$(INC_DIR))
 
-Milieu.o : Milieu.h Milieu.cpp
-	g++ -Wall -std=c++11  -c Milieu.cpp -I .
+vpath %.cpp $(SRC_DIR)
+
+define make-goal
+$1/%.o: %.cpp
+	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $$< -o $$@
+endef
+
+.PHONY: all checkdirs clean
+
+all: checkdirs $(EXE_DIR)/app
+
+$(EXE_DIR)/app: $(OBJ)
+	$(LD) $^ -o $@ $(LDFLAGS)
+
+checkdirs: $(BUILD_DIR) $(EXE_DIR)
+
+$(BUILD_DIR):
+	@mkdir -p $@
+
+$(EXE_DIR):
+	@mkdir -p $@
+
+clean:
+	@rm -rf $(BUILD_DIR) $(EXE_DIR)
 
 
-
+$(foreach bdir,$(BUILD_DIR),$(eval $(call make-goal,$(bdir))))

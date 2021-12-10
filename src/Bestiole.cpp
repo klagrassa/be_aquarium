@@ -1,5 +1,7 @@
-#include "Bestiole.h"
 
+#include "Bestiole.h"
+#include "Capteur.h"
+#include "Accessoire.h"
 #include "Milieu.h"
 
 #include <cstdlib>
@@ -13,12 +15,10 @@ const double      Bestiole::LIMITE_VUE = 30.;
 int               Bestiole::next = 0;
 
 
-Bestiole::Bestiole( void )
-{
+Bestiole::Bestiole(const IComportement* comp, const Accessoire* acc, const Capteur* capteurs) {
+    identite = ++next;
 
-   identite = ++next;
-
-   cout << "const Bestiole (" << identite << ") par defaut" << endl;
+   std::cout << "const Bestiole (" << identite << ") par defaut" << std::endl;
 
    x = y = 0;
    cumulX = cumulY = 0.;
@@ -29,35 +29,23 @@ Bestiole::Bestiole( void )
    couleur[ 0 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
    couleur[ 1 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
    couleur[ 2 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
-
 }
-
-
-Bestiole::Bestiole( const Bestiole & b )
-{
-
-   identite = ++next;
-
-   cout << "const Bestiole (" << identite << ") par copie" << endl;
-
-   x = b.x;
-   y = b.y;
-   cumulX = cumulY = 0.;
-   orientation = b.orientation;
-   vitesse = b.vitesse;
-   couleur = new T[ 3 ];
-   memcpy( couleur, b.couleur, 3*sizeof(T) );
-
-}
-
 
 Bestiole::~Bestiole( void )
 {
 
    delete[] couleur;
 
-   cout << "dest Bestiole" << endl;
+   std::cout << "dest Bestiole" << std::endl;
 
+}
+
+
+Bestiole Bestiole::clonage(const Bestiole & bestiole) {
+}
+
+int Bestiole::getAge() const{
+   return this->age;
 }
 
 
@@ -106,7 +94,7 @@ void Bestiole::bouge( int xLim, int yLim )
 }
 
 
-void Bestiole::action( Milieu & monMilieu )
+void Bestiole::action(const Milieu & monMilieu )
 {
 
    bouge( monMilieu.getWidth(), monMilieu.getHeight() );
