@@ -2,6 +2,7 @@
 #define _PARAMETRES_SIM_H
 
 #include <map>
+#include <iostream>
 
 /**
  * @brief This class contains simulation parameters
@@ -46,7 +47,7 @@ class Parametres_Sim {
      */
     static Parametres_Sim& getInstance() {
       static Parametres_Sim instance;  // sera instancié au premier appel à getInstance()
-      return instance; 
+      return instance;
     }
 
 

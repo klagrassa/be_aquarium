@@ -11,7 +11,7 @@ Milieu::Milieu(const Parametres_Sim* p): UImg(p->getWidth(), p->getHeight(), 1, 
 {
    param = p;
 
-   std::cout << "const Milieu" << std::endl;
+   std::cout << "const Milieu " << this << std::endl;
 
    std::srand( time(NULL) );
 

@@ -6,7 +6,9 @@
  * @brief Construct a new Parametres_Sim::Parametres_Sim object
  * 
  */
-Parametres_Sim::Parametres_Sim() {}
+Parametres_Sim::Parametres_Sim() {
+    std::cout << "Parametre sim " << this << std::endl;
+}
 
 /**
  * @brief Destroy the Parametres_Sim::Parametres_Sim object
