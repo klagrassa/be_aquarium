@@ -11,7 +11,7 @@ class IComportement;
 
 class Bestiole {
   private:
-    
+
     double taux_clonage;
     int age;
 
@@ -23,17 +23,11 @@ class Bestiole {
     std::vector<Bestiole*> bestioles_environnantes;
 
 private :
-   static const double     AFF_SIZE;
-   static const double     MAX_VITESSE;
-   static const double     LIMITE_VUE_DIST;
-   static const double     LIMITE_VUE_ANGLE;
-   static const double     VUE_CAPACITY;
-   static const double     EARS_CAPACITY;
-
-
     static const double     AFF_SIZE;
     static const double     MAX_VITESSE;
-    static const double     LIMITE_VUE;
+    static const double     AFF_SIZE;
+    static const double     MAX_VITESSE;
+
 
     static int              next;
 
@@ -48,22 +42,21 @@ private :
 
 
   public:
-    Bestiole(const IComportement* comp, const Accessoire* acc, const Capteur* capteurs); 
+    Bestiole(const IComportement* comp, const Accessoire* acc, const Capteur* capteurs);
     ~Bestiole();
     Bestiole clonage(const Bestiole & bestiole);
 
   public:
     void action(const Milieu& milieu);
     void draw( UImg & support );
-    bool jeTeVois( const Bestiole & b ) const;
     void initCoords( int xLim, int yLim );
 
   public:
     int getAge() const;
-  
+
   public:
     friend bool operator==( const Bestiole & b1, const Bestiole & b2 );
-  
+
   private :
     void bouge( int xLim, int yLim );
 

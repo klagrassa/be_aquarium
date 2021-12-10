@@ -37,3 +37,10 @@ void Oreilles::setCapaciteDetection( float cd) {
   assert(cd >= 0 && cd <= 1);
   this->capacite_detection = cd;
 }
+
+bool Oreilles::detect(Bestiole * cette_bestiole, Bestiole* b)
+{
+   double         dist;
+   dist = std::sqrt( (x-b.x)*(x-b.x) + (y-b.y)*(y-b.y) );
+   return ((dist <= this->distance_ecoute) &&  (rand()/RAND_MAX <= this->capacite_detection));
+}

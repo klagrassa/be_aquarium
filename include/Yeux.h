@@ -20,17 +20,19 @@ class Yeux : public Capteur {
 
     ~Yeux();
 
-    getCapaciteDetection( void );
+    float getCapaciteDetection( void );
 
-    getDistanceVision( void );
+    float getDistanceVision( void );
 
-    getAngleVision( void );
+    float getAngleVision( void );
 
-    setDistanceVision( float dv );
+    void setDistanceVision( float dv );
 
-    setAngleVision( float av );
+    void setAngleVision( float av );
 
-    setCapacitePerception( float cp);
+    void setCapacitePerception( float cp);
+
+    bool detect(Bestiole * cette_bestiole, Bestiole* b);
 
 };
 #endif

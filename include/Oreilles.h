@@ -31,5 +31,7 @@ class Oreilles : public Capteur {
     void setChampsPerception( float cp );
 
     void setCapaciteDetection( float cd );
+
+    bool detect(Bestiole * cette_bestiole, Bestiole* b);
 };
 #endif
