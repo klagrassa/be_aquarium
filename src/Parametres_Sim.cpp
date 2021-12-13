@@ -17,6 +17,16 @@ Parametres_Sim::~Parametres_Sim() {}
 // get / set operators
 
 /**
+ * @brief Renvoie les proportions de génération par comportement
+ * 
+ * @return std::vector<double> somme des éléments doit être égale à 1
+ */
+std::vector<double> Parametres_Sim::getProportions()
+{
+    return this->proportions;
+}
+
+/**
  * @brief Retourne la hauteur de la fenêtre
  * 
  * @return int hauteur de la fenêtre
@@ -41,6 +51,30 @@ int Parametres_Sim::getWidth() const {
  */
 int Parametres_Sim::getDelay() const {
     return this->delay;
+}
+
+/**
+ * @brief Retourne les limites des carapaces
+ * 
+ * @return double* le premier élément est le ralentissement max
+ *                  le second élément est la réduction de mort
+ */
+double* Parametres_Sim::getLimitesCarapaces()
+{
+    double res[2] = {this->limites_carapace_ralentissement,
+                    this->limites_carapace_mort};
+    return res; 
+}
+
+/**
+ * @brief Renvoie les coefficients min et max de valeurs de camouflage
+ * 
+ * @return double* premier élément : min
+ *                 deuxième élément : max
+ */
+double* Parametres_Sim::getLimitesCamouflage()
+{
+    return this->limites_camouflage;
 }
 
 /**
@@ -93,6 +127,16 @@ double* Parametres_Sim::getLimitesDistanceAngulaireChampsVision() {
 double* Parametres_Sim::getLimitesDistanceChampsVision() {} 
 
 /**
+ * @brief Renvoie le coefficient limite de vitesse pour les nageoires
+ * 
+ * @return double coefficient de vitesse max pour les nageoires
+ */
+double Parametres_Sim::getLimitesNageoiresVitesse()
+{
+    return this->limites_nageoires_vitesse;
+}
+
+/**
  * @brief Hauteur de la fenêtre
  * 
  * @param height hauteur de la fenêtre
@@ -140,7 +184,8 @@ void Parametres_Sim::setLimitesNageoires(double vitesse_max){
  * @param coeff_max max du camouflage
  */
 void Parametres_Sim::setLimitesCamouflage(double coeff_min, double coeff_max) {
-    if (coeff_min >= 0 && coeff_max >= coeff_min)
+    // 0 <= min <= max <= 1
+    if (coeff_min >= 0 && coeff_max >= coeff_min && coeff_max <= 1 && coeff_min <= coeff_max)
     {
         this->limites_camouflage[0] = coeff_min;
         this->limites_camouflage[1] = coeff_max;
@@ -215,4 +260,30 @@ void Parametres_Sim::setLimitesDistanceAngulaireChampsVision(double angle_min, d
         this->limites_angulaire_champ_vision[0] = angle_min;
         this->limites_angulaire_champ_vision[1] = angle_max;
     }
+}
+
+/**
+ * @brief Paramètre les proportions de générations de bestiole.
+ * Chaque pourcentage représente un caractère à générer parmi 5.
+ * Voir doc
+ * 
+ * @param proportions vector de double, la somme doit être égale à 1
+ */
+void Parametres_Sim::setProportions(std::vector<double> proportions)
+{
+    this->proportions = proportions;
+}
+
+/**
+ * @brief Paramètre les limites pour la carapace
+ * 
+ * @param ralentissement_max 
+ * @param mort coefficient de réduction de dégâts
+ */
+void Parametres_Sim::setLimitesCarapace(double ralentissement_max, double mort)
+{
+    if (ralentissement_max >= 1)
+        this->limites_carapace_ralentissement;
+    if (mort >= 1)
+        this->limites_carapace_mort;
 }

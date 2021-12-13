@@ -4,22 +4,23 @@
 
 #include "IComportement.h"
 #include <vector>
-using namespace std;
 
 class Multiple : public IComportement {
   private:
     //Liste des comportements
-    vector<IComportement *> listeComposants;
+    std::vector<IComportement *> listeComposants;
 
     IComportement* comportement_actuel;
 
 
   public:
     void choisir_comportement();
+    void bouge(Bestiole* bestiole_actuelle, std::vector<Bestiole*> bestioles);
 
+  public:
     Multiple(const IComportement & liste_comportements);
-
     Multiple(const Multiple & m);
+    ~Multiple();
 
 };
 #endif

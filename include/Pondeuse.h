@@ -1,6 +1,7 @@
 #ifndef _PONDEUSE_H
 #define _PONDEUSE_H
 
+#include <vector>
 
 class Parametres_Sim;
 class Bestiole;
@@ -17,8 +18,9 @@ class Pondeuse {
 
   // methods
   public:
-    Bestiole* creerBestioles(int nb_bestioles);
-    Bestiole* creerBestiole(const IComportement* comportement, const Accessoire* accessoires, const Capteur* capteurs);
+    std::vector<Bestiole> creerBestioles(int nb_bestioles);
+    Bestiole* creerBestiole(IComportement* comportement, std::vector<Accessoire*> accessoires, std::vector<Capteur*> capteurs);
+    Bestiole* creerBestiole(IComportement* comp);
 
   // ctors and dtor
   public:
