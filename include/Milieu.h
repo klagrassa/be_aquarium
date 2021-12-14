@@ -21,14 +21,12 @@ class Milieu : public UImg {
     static const T          white[];
 
     int                     width, height;
-    std::vector<Bestiole>   listeBestioles;
+    std::vector<Bestiole*>   listeBestioles;
 
   public:
     //Avance la simulation d'un step
     void step(void);   
     
-
-    std::vector<Bestiole*> verifier_vieillesse(const Bestiole* & bestioles);
     std::vector<Bestiole*> verifier_clonage(const Bestiole* & bestioles, double taux_clonage);
 
     int nbVoisins( const Bestiole & b );

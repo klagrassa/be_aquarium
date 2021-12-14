@@ -21,7 +21,7 @@ int main()
 
    Aquarium ecosysteme(param);
 
-   for ( int i = 1; i <= 20; ++i )
+   //for ( int i = 1; i <= 20; ++i )
       //ecosysteme.getMilieu().addMember( new Bestiole(nullptr, nullptr, nullptr) );
    ecosysteme.run();
 
