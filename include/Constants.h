@@ -19,11 +19,11 @@ const double AFF_SIZE = 8.;
 const double MAX_VITESSE = 10.;
 const double LIMITE_VUE = 30.;
 
-const IComportement* liste_comportement[4] = {
+std::vector<IComportement*> liste_comportement = {
     new Gregaire(),
+    new Kamikaze(),
     new Peureux(),
-    new Prevoyant(),
-    new Kamikaze()
+    new Prevoyant()
 };
 
 #endif;

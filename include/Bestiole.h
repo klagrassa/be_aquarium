@@ -11,44 +11,48 @@ class IComportement;
 
 class Bestiole
 {
-private:
-  double taux_clonage;
-  int age;
-  int age_lim;
+  private:
+    double taux_clonage;
+    int age;
+    int age_lim;
 
-  std::vector<Capteur *> capteurs;
-  std::vector<Accessoire *> accessoires;
-  IComportement *comportement;
+    std::vector<Capteur *> capteurs;
+    std::vector<Accessoire *> accessoires;
+    IComportement *comportement;
 
-  std::vector<Bestiole *> bestioles_environnantes;
+    std::vector<Bestiole *> bestioles_environnantes;
 
-  static int next;
+    static int next;
 
-private:
-  int identite;
-  int x, y;
-  double cumulX, cumulY;
-  double orientation;
-  double vitesse;
+  private:
+    int identite;
+    int x, y;
+    double cumulX, cumulY;
+    double orientation;
+    double vitesse;
 
-  T *couleur;
+    T *couleur;
 
-public:
-  Bestiole(IComportement *comp, std::vector<Accessoire *> acc, std::vector<Capteur *> capteurs);
-  Bestiole(const Bestiole &b);
-  ~Bestiole();
-  Bestiole clonage(const Bestiole &bestiole);
+  public:
+    Bestiole(IComportement *comp, std::vector<Accessoire *> acc, std::vector<Capteur *> capteurs);
+    Bestiole(const Bestiole &b);
+    ~Bestiole();
+    Bestiole clonage(const Bestiole &bestiole);
 
-  bool action(const Milieu &milieu);
-  void draw(UImg &support);
-  bool jeTeVois(const Bestiole &b) const;
-  void initCoords(int xLim, int yLim);
+    bool action(const Milieu &milieu);
+    void draw(UImg &support);
+    bool jeTeVois(const Bestiole &b) const;
+    void initCoords(int xLim, int yLim);
 
-  int getAge() const;
+    int getAge() const;
 
-  friend bool operator==(const Bestiole &b1, const Bestiole &b2);
+    friend bool operator==(const Bestiole &b1, const Bestiole &b2);
 
-private:
-  void bouge(int xLim, int yLim);
+  private:
+    void bouge(int xLim, int yLim);
+
+  public:
+    void ajouterAccessoire(Accessoire* acc);
+    void ajouterCapteur(Capteur* cap);
 };
 #endif

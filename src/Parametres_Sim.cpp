@@ -83,6 +83,8 @@ double* Parametres_Sim::getLimitesCamouflage()
  * 
  * @return double* tableau contenant les limites,
  * taille de 2
+ * 0 = rayon min
+ * 1 = rayon max
  */
 double* Parametres_Sim::getLimitesRayonOreilles() {
     return this->limites_rayon_oreilles;
@@ -93,6 +95,8 @@ double* Parametres_Sim::getLimitesRayonOreilles() {
  * 
  * @return double* tableau contenant les limites
  * taille de 2
+ * 0 = detec min
+ * 1 = detec max
  */
 double* Parametres_Sim::getLimitesDetectionOreilles() {
     return this->limites_detection_oreilles;
