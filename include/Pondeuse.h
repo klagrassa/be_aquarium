@@ -20,7 +20,7 @@ class Pondeuse {
   // methods
   public:
     /* Génération de bestioles aléatoires pour le nombre donné */
-    std::vector<Bestiole> creerBestioles(int nb_bestioles);
+    std::vector<Bestiole*> creerBestioles(int nb_bestioles);
     /* Génération de bestiole avec liste de capteur et équipements 
     prédéfinis */
     Bestiole* creerBestiole(IComportement* comportement, std::vector<Accessoire*> accessoires, std::vector<Capteur*> capteurs);

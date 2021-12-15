@@ -30,12 +30,12 @@ double Oreilles::getDistanceEcoute( void ) {
 }
 
 void Oreilles::setDistanceEcoute( double de ) {
-  if (de >= 0);
+  if (de >= 0)
     this->distance_ecoute = de;
 }
 
 void Oreilles::setChampsPerception( double cp ) {
-  if (cp >= 0 && cp <= 2*M_PI);
+  if (cp >= 0 && cp <= 2*M_PI)
     this->champs_perception = cp;
 }
 

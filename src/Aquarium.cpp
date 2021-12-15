@@ -2,6 +2,11 @@
 #include "../include/Parametres_Sim.h"
 #include "../include/Milieu.h"
 
+/**
+ * @brief Construct a new Aquarium:: Aquarium object
+ * 
+ * @param param Paramètres de la simulation
+ */
 Aquarium::Aquarium(const Parametres_Sim & param) : CImgDisplay(), delay( param.getDelay() )
 {
 
@@ -17,6 +22,10 @@ Aquarium::Aquarium(const Parametres_Sim & param) : CImgDisplay(), delay( param.g
    move( static_cast<int>((screenWidth-param.getWidth())/2), static_cast<int>((screenHeight-param.getHeight())/2) );
 }
 
+/**
+ * @brief Destroy the Aquarium:: Aquarium object
+ * 
+ */
 Aquarium::~Aquarium( void )
 {
 
@@ -26,7 +35,11 @@ Aquarium::~Aquarium( void )
 
 }
 
-
+/**
+ * @brief Fais tourner l'écosystème défini par le milieu
+ * Utilise la variable "delay" (en ms) pour un tick de simulation
+ * 
+ */
 void Aquarium::run( void )
 {
 

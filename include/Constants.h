@@ -1,13 +1,6 @@
 #ifndef __CONST_H
 #define __CONST_H
 
-// Comportements
-#include "Gregaire.h"
-#include "Multiple.h"
-#include "Kamikaze.h"
-#include "Prevoyant.h"
-#include "Peureux.h"
-
 /**
  * CONSTANTS.H
  *
@@ -15,15 +8,8 @@
  *
  */
 
-const double AFF_SIZE = 8.;
-const double MAX_VITESSE = 10.;
-const double LIMITE_VUE = 30.;
-
-std::vector<IComportement*> liste_comportement = {
-    new Gregaire(),
-    new Kamikaze(),
-    new Peureux(),
-    new Prevoyant()
-};
+inline constexpr double AFF_SIZE = 8.;
+inline constexpr double MAX_VITESSE = 10.;
+inline constexpr double LIMITE_VUE = 30.;
 
 #endif

@@ -19,6 +19,9 @@ Milieu::Milieu( int _width, int _height ): UImg( _width, _height, 1, 3 ),
 
    std::srand( time(NULL) );
 
+   // création de la pondeuse
+   this->pondeuse = new Pondeuse(this->param);
+
 }
 
 Milieu::~Milieu()
@@ -80,3 +83,11 @@ void Milieu::addMember(Bestiole* b) {
    listeBestioles.push_back(b); 
    listeBestioles.back()->initCoords(width, height);
 }
+
+void Milieu::ponteInitiale(int nb_bestioles)
+{
+   if (nb_bestioles > 0)
+      this->listeBestioles = this->pondeuse->creerBestioles(nb_bestioles);
+}
+
+

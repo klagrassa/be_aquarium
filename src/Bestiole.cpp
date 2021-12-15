@@ -26,13 +26,12 @@ Bestiole::Bestiole(IComportement *comp,
 
    std::cout << "const Bestiole (" << identite << ") par defaut" << this << std::endl;
 
-
    x = y = 0;
    cumulX = cumulY = 0.;
    orientation = static_cast<double>(rand()) / RAND_MAX * 2. * M_PI;
    vitesse = static_cast<double>(rand()) / RAND_MAX * MAX_VITESSE;
 
-   age_lim = rand()%100;
+   age_lim = rand() % 100;
 
    age = 0;
 
@@ -47,6 +46,11 @@ Bestiole::Bestiole(IComportement *comp,
    couleur[2] = static_cast<int>(static_cast<double>(rand()) / RAND_MAX * 230.);
 }
 
+/**
+ * @brief Construct a copy Bestiole:: Bestiole object
+ *
+ * @param b bestiole a copier
+ */
 Bestiole::Bestiole(const Bestiole &b)
 {
 
@@ -61,6 +65,8 @@ Bestiole::Bestiole(const Bestiole &b)
    vitesse = b.vitesse;
    couleur = new T[3];
    memcpy(couleur, b.couleur, 3 * sizeof(T));
+
+   // copier les capteurs / accessoires
 }
 
 /**
@@ -81,13 +87,20 @@ Bestiole::~Bestiole(void)
       delete *it;
 }
 
+/**
+ * @brief Effectue une copie de la bestiole actuelle
+ * @deprecated use copy ctor instead
+ *
+ * @param bestiole
+ * @return Bestiole
+ */
 Bestiole Bestiole::clonage(const Bestiole &bestiole)
 {
 }
 
 /**
  * @brief Renvoie l'âge actuel de la bestiole
- * 
+ *
  * @return int age de la bestiole
  */
 int Bestiole::getAge() const
@@ -97,7 +110,7 @@ int Bestiole::getAge() const
 
 /**
  * @brief Renvoie la position en x de la bestiole
- * 
+ *
  * @return int x position
  */
 int Bestiole::getX() const
@@ -107,7 +120,7 @@ int Bestiole::getX() const
 
 /**
  * @brief Renvoie la position en y de la bestiole
- * 
+ *
  * @return int y position
  */
 int Bestiole::getY() const
@@ -117,7 +130,7 @@ int Bestiole::getY() const
 
 /**
  * @brief Renvoie l'orientation de la bestiole
- * 
+ *
  * @return double angle d'orientation de la bestiole
  */
 double Bestiole::getOrientation() const
@@ -125,6 +138,12 @@ double Bestiole::getOrientation() const
    return this->orientation;
 }
 
+/**
+ * @brief Initialisation des coordonnée à des points aléatoires
+ *
+ * @param xLim
+ * @param yLim
+ */
 void Bestiole::initCoords(int xLim, int yLim)
 {
 
@@ -174,10 +193,11 @@ void Bestiole::bouge(int xLim, int yLim)
 bool Bestiole::action(const Milieu &monMilieu)
 {
    bool mort = false;
-   age ++;
+   age++;
    bouge(monMilieu.getWidth(), monMilieu.getHeight());
 
-   if(age>=age_lim){
+   if (age >= age_lim)
+   {
       mort = true;
    }
    return mort;
@@ -191,6 +211,26 @@ void Bestiole::draw(UImg &support)
 
    support.draw_ellipse(x, y, AFF_SIZE, AFF_SIZE / 5., -orientation / M_PI * 180., couleur);
    support.draw_circle(xt, yt, AFF_SIZE / 2., couleur);
+}
+
+/**
+ * @brief Ajoute un accessoire à la bestiole
+ * 
+ * @param acc accessoire à ajouter
+ */
+void Bestiole::ajouterAccessoire(Accessoire *acc)
+{
+   accessoires.push_back(acc);
+}
+
+/**
+ * @brief Ajoute un capteur à la bestiole
+ * 
+ * @param cap capteur à ajouter
+ */
+void Bestiole::ajouterCapteur(Capteur* cap)
+{
+   capteurs.push_back(cap);
 }
 
 bool operator==(const Bestiole &b1, const Bestiole &b2)

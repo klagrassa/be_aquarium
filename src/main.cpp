@@ -23,6 +23,9 @@ int main()
 
    Aquarium ecosysteme(param);
 
+   // Génération des bestioles
+   ecosysteme.getMilieu().ponteInitiale(54);
+
    //for ( int i = 1; i <= 20; ++i )
       //ecosysteme.getMilieu().addMember( new Bestiole(nullptr, nullptr, nullptr) );
    ecosysteme.run();

@@ -12,32 +12,38 @@ class Parametres_Sim;
 
 using namespace cimg_library;
 
-class Milieu : public UImg {
-  private:
-    Pondeuse * pondeuse;
-    Milieu* instance = nullptr;
-    Parametres_Sim* param;
+class Milieu : public UImg
+{
+private:
+  // Attributs liés à la simulation
+  Pondeuse *pondeuse = nullptr;
+  Milieu *instance = nullptr;
+  Parametres_Sim *param = nullptr;
 
-    static const T          white[];
+  // Attributs liés aux bestioles
+  std::vector<Bestiole *> listeBestioles;
 
-    int                     width, height;
-    std::vector<Bestiole*>   listeBestioles;
 
-  public:
-    //Avance la simulation d'un step
-    void step(void);   
-    
-    std::vector<Bestiole*> verifier_clonage(const Bestiole* & bestioles, double taux_clonage);
+  // Couleur du milieu
+  static const T white[];
+  int width, height;
 
-    int nbVoisins( const Bestiole & b );
+public:
+  // Avance la simulation d'un step
+  void step(void);
 
-    void addMember(Bestiole* b);
+  std::vector<Bestiole *> verifier_clonage(const Bestiole *&bestioles, double taux_clonage);
+  int nbVoisins(const Bestiole &b);
+  void addMember(Bestiole *b);
 
-    Milieu( int _width, int _height );
-    ~Milieu();
-  
-    int getWidth( void ) const { return width; };
-    int getHeight( void ) const { return height; };
+// ctor and dtor
+public:
+  Milieu(int _width, int _height);
+  ~Milieu();
 
+  int getWidth(void) const { return width; };
+  int getHeight(void) const { return height; };
+
+  void ponteInitiale(int nb_bestioles);
 };
 #endif

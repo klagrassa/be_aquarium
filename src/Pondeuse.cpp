@@ -7,6 +7,13 @@
 
 #include "Constants.h" /* liste de comportements */
 
+// Comportements
+#include "Gregaire.h"
+#include "Multiple.h"
+#include "Kamikaze.h"
+#include "Prevoyant.h"
+#include "Peureux.h"
+
 // Accessoires
 #include "Nageoires.h"
 #include "Camouflage.h"
@@ -28,9 +35,9 @@
  * @param nb_bestioles nombre de bestioles totales à générer
  * @return std::vector<Bestiole> 
  */
-std::vector<Bestiole> Pondeuse::creerBestioles(int nb_bestioles)
+std::vector<Bestiole*> Pondeuse::creerBestioles(int nb_bestioles)
 {
-    std::vector<Bestiole> bestioles_initiales;
+    std::vector<Bestiole* > bestioles_initiales;
     std::vector<double> proportions = param_sim->getProportions();
 
     // Génération des bestioles par comportement
@@ -38,31 +45,31 @@ std::vector<Bestiole> Pondeuse::creerBestioles(int nb_bestioles)
     {
         Gregaire *comp = new Gregaire();
         bestioles_initiales.push_back(
-            *(creerBestiole(comp)));
+            (creerBestiole(comp)));
     }
     for (int i = 0; i < int(proportions[1] * (nb_bestioles - 1)); i++)
     {
         Kamikaze *comp = new Kamikaze();
         bestioles_initiales.push_back(
-            *(creerBestiole(comp)));
+            (creerBestiole(comp)));
     }
     for (int i = 0; i < int(proportions[2] * (nb_bestioles - 1)); i++)
     {
         Peureux *comp = new Peureux();
         bestioles_initiales.push_back(
-            *(creerBestiole(comp)));
+            (creerBestiole(comp)));
     }
     for (int i = 0; i < int(proportions[3] * (nb_bestioles - 1)); i++)
     {
         Prevoyant *comp = new Prevoyant();
         bestioles_initiales.push_back(
-            *(creerBestiole(comp)));
+            (creerBestiole(comp)));
     }
     for (int i = 0; i < int(proportions[4] * (nb_bestioles - 1)); i++)
     {
-        Multiple *comp = new Multiple(liste_comportement);
+        Multiple *comp = new Multiple();
         bestioles_initiales.push_back(
-            *(creerBestiole(comp)));
+            (creerBestiole(comp)));
     }
     return bestioles_initiales;
 }

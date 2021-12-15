@@ -5,6 +5,13 @@
 #include "IComportement.h"
 #include <vector>
 
+// Comportements
+#include "Gregaire.h"
+#include "Multiple.h"
+#include "Kamikaze.h"
+#include "Prevoyant.h"
+#include "Peureux.h"
+
 class Multiple : public IComportement {
   private:
     //Liste des comportements
@@ -18,7 +25,7 @@ class Multiple : public IComportement {
     void bouge(Bestiole* bestiole_actuelle, std::vector<Bestiole*> bestioles);
 
   public:
-    Multiple(std::vector<IComportement*> liste_comportements);
+    Multiple();
     Multiple(const Multiple & m);
     ~Multiple();
 
