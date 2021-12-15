@@ -26,4 +26,4 @@ std::vector<IComportement*> liste_comportement = {
     new Prevoyant()
 };
 
-#endif;
+#endif

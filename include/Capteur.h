@@ -12,7 +12,7 @@ class Capteur {
     * @param cette_bestiole bestiole actuelle
     * @param b bestiole a detecter
     */
-    virtual Bestiole* detect(Bestiole * cette_bestiole, Bestiole* b) = 0;
+    virtual bool detect(Bestiole * cette_bestiole, Bestiole* b) = 0;
 
 };
 #endif

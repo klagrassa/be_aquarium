@@ -11,3 +11,4 @@ Multiple::Multiple(std::vector<IComportement*> liste_comportements) {
 Multiple::Multiple(const Multiple & m) {
 }
 
+Multiple::~Multiple() {}

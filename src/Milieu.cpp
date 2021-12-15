@@ -5,11 +5,6 @@
 
 const T Milieu::white[] = {255,255,255};
 
-//Renvoie les bestioles qui doivent mourir de vieillesse
-std::vector<Bestiole*> Milieu::verifier_vieillesse(const Bestiole* & bestioles) {
-    
-}
-
 //Renvoie les bestioles clon�es. Le clonage ne se fait uniquement que si le taux de clonage de la bestiole est inf�rieur au taux de clonage donn�
 //en param�tre.
 std::vector<Bestiole*> Milieu::verifier_clonage(const Bestiole* & bestioles, double taux_clonage) {
@@ -52,18 +47,36 @@ void Milieu::step( void )
 }
 
 
-int Milieu::nbVoisins( const Bestiole & b )
-{
-   int nb = 0;
+// TODO revoir l'intérêt de cette implémentation
+/**
+ * @brief Renvoie le nombre de voisins de la bestioles
+ * 
+ * @param b 
+ * @return int 
+ */
+// int Milieu::nbVoisins( const Bestiole & b )
+// {
+//    int nb = 0;
 
-   for (std::vector<Bestiole>::iterator it = listeBestioles.begin(); it != listeBestioles.end(); ++it )
-      if (!(b == *it) && b.jeTeVois(*it))
-         ++nb;
+//    for (std::vector<Bestiole>::iterator it = listeBestioles.begin(); it != listeBestioles.end(); ++it )
+//       if (!(b == *it) && b.jeTeVois(*it))
+//          ++nb;
 
-   return nb;
-}
+//    for (auto it = this->listeBestioles.begin(); it != listeBestioles.end(); ++it)
+//    {
 
-void Milieu::addMember( const Bestiole & b ) { 
+//    }
+
+//    return nb;
+// }
+
+/**
+ * @brief Ajoute une bestiole dans le milieu. Initialise
+ * ses coordonnées.
+ * 
+ * @param b bestiole à ajouter
+ */
+void Milieu::addMember(Bestiole* b) { 
    listeBestioles.push_back(b); 
-   listeBestioles.back().initCoords(width, height);
+   listeBestioles.back()->initCoords(width, height);
 }

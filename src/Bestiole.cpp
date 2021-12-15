@@ -24,13 +24,6 @@ Bestiole::Bestiole(IComportement *comp,
 {
    identite = ++next;
 
-
-const double      Bestiole::AFF_SIZE = 8.;
-const double      Bestiole::MAX_VITESSE = 10.;
-
-
-int               Bestiole::next = 0;
-
    std::cout << "const Bestiole (" << identite << ") par defaut" << this << std::endl;
 
 
@@ -92,9 +85,44 @@ Bestiole Bestiole::clonage(const Bestiole &bestiole)
 {
 }
 
+/**
+ * @brief Renvoie l'âge actuel de la bestiole
+ * 
+ * @return int age de la bestiole
+ */
 int Bestiole::getAge() const
 {
    return this->age;
+}
+
+/**
+ * @brief Renvoie la position en x de la bestiole
+ * 
+ * @return int x position
+ */
+int Bestiole::getX() const
+{
+   return this->x;
+}
+
+/**
+ * @brief Renvoie la position en y de la bestiole
+ * 
+ * @return int y position
+ */
+int Bestiole::getY() const
+{
+   return this->y;
+}
+
+/**
+ * @brief Renvoie l'orientation de la bestiole
+ * 
+ * @return double angle d'orientation de la bestiole
+ */
+double Bestiole::getOrientation() const
+{
+   return this->orientation;
 }
 
 void Bestiole::initCoords(int xLim, int yLim)
@@ -170,26 +198,3 @@ bool operator==(const Bestiole &b1, const Bestiole &b2)
 
    return (b1.identite == b2.identite);
 }
-<<<<<<< HEAD
-=======
-
-
-bool Bestiole::jeTeVois( const Bestiole & b ) const
-{
-   double         dist;
-   dist = std::sqrt( (x-b.x)*(x-b.x) + (y-b.y)*(y-b.y) );
-   bool           distance;
-   bool           angle;
-   distance = (dist <= LIMITE_VUE_DIST);
-   angle = (orientation - arctan(b.x/b.y) <= LIMITE_VUE_ANGLE);
-   return (distance &&  angle && (rand()/RAND_MAX <= VUE_CAPACITY));
-}
-
-bool Bestiole::jeTentends( const Bestiole & b ) const
-{
-   double         dist;
-   dist = std::sqrt( (x-b.x)*(x-b.x) + (y-b.y)*(y-b.y) );
-   return ((dist <= LIMITE_EARS_DIST) &&  (rand()/RAND_MAX <= EARS_CAPACITY));
-
-}
->>>>>>> 68bd5a667bf4794937c06523cdcef382121a62cd

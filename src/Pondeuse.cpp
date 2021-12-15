@@ -20,14 +20,13 @@
 #include <time.h>   /* time */
 #include <cmath>    /* floor */
 
-// TODO implémenter le random des capteurs et tester la pondeuse
 
 /**
  * @brief Création initiale des bestioles en accord avec les
  * proportions indiquées dans les paramètres de simulation
  *
  * @param nb_bestioles nombre de bestioles totales à générer
- * @return Bestiole*
+ * @return std::vector<Bestiole> 
  */
 std::vector<Bestiole> Pondeuse::creerBestioles(int nb_bestioles)
 {

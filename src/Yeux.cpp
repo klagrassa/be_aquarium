@@ -1,16 +1,11 @@
 
 #include "Yeux.h"
+#include "Bestiole.h"
 #include <cmath>
 
 Yeux::Yeux(const Yeux & y) {
 }
 
-<<<<<<< HEAD
-Yeux::Yeux(double capacite_perception, double angle_vision, double distance_vision) {
-  this->capacite_perception = capacite_perception;
-  this->angle_vision = angle_vision;
-  this->distance_vision = distance_vision;
-=======
 /**
  * @brief Construct a new Yeux:: Yeux object
  * 
@@ -22,7 +17,6 @@ Yeux::Yeux(double capacite_perception, double angle_vision, double distance_visi
     this->capacite_perception = capacite_perception;
     this->angle_vision = angle_vision;
     this->distance_vision = distance_vision;
->>>>>>> 68bd5a667bf4794937c06523cdcef382121a62cd
 }
 
 Yeux::~Yeux() {
@@ -69,12 +63,21 @@ void Yeux::setCapacitePerception( double cp) {
   }
 }
 
+/**
+ * @brief Implémentation de la detection pour les yeux 
+ * 
+ * @param cette_bestiole la bestiole qui doit detecter
+ * @param b la bestiole qui doit être detectée
+ * @return true si b est detectée
+ * @return false si b n'est pas detectée
+ */
 bool Yeux::detect(Bestiole * cette_bestiole, Bestiole* b) {
    double         dist;
-   dist = std::sqrt( (x-b.x)*(x-b.x) + (y-b.y)*(y-b.y) );
+   dist = std::sqrt( (cette_bestiole->getX()-b->getX())*(cette_bestiole->getX()-b->getX()) 
+   + (cette_bestiole->getY()- b->getY())*(cette_bestiole->getY()- b->getY()) );
    bool           distance;
    bool           angle;
    distance = (dist <= this->distance_vision);
-   angle = (orientation - atan(b.x/b.y) <= this->angle_vision);
+   angle = (cette_bestiole->getOrientation() - atan(b->getX()/b->getY()) <= this->angle_vision);
    return (distance &&  angle && (rand()/RAND_MAX <= this->capacite_perception));
 }

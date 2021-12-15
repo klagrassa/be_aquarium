@@ -31,7 +31,7 @@ class Milieu : public UImg {
 
     int nbVoisins( const Bestiole & b );
 
-    void addMember( const Bestiole & b );
+    void addMember(Bestiole* b);
 
     Milieu( int _width, int _height );
     ~Milieu();

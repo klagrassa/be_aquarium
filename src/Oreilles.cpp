@@ -1,17 +1,12 @@
 
 #include "Oreilles.h"
+#include "Bestiole.h"
 #include <cmath>
 
 
 Oreilles::Oreilles(const Oreilles & c) {
 }
 
-<<<<<<< HEAD
-Oreilles::Oreilles(float distance_ecoute, float capacite_detection) {
-  this->distance_ecoute = distance_ecoute;
-  this->capacite_detection = capacite_detection;
-  this->champs_perception = 2*M_PI;
-=======
 /**
  * @brief Construct a new Oreilles:: Oreilles object
  * 
@@ -21,38 +16,46 @@ Oreilles::Oreilles(float distance_ecoute, float capacite_detection) {
 Oreilles::Oreilles(double distance_ecoute, double capacite_detection) {
     this->distance_ecoute = distance_ecoute;
     this->capacite_detection = capacite_detection;
->>>>>>> 68bd5a667bf4794937c06523cdcef382121a62cd
 }
 
 Oreilles::~Oreilles() {
 }
 
-float Oreilles::getCapaciteDetection( void ) {
+double Oreilles::getCapaciteDetection( void ) {
   return this->capacite_detection;
 }
 
-float Oreilles::getDistanceEcoute( void ) {
+double Oreilles::getDistanceEcoute( void ) {
   return this->distance_ecoute;
 }
 
-void Oreilles::setDistanceEcoute( float de ) {
-  assert(de >= 0);
-  this->distance_ecoute = de;
+void Oreilles::setDistanceEcoute( double de ) {
+  if (de >= 0);
+    this->distance_ecoute = de;
 }
 
-void Oreilles::setChampsPerception( float cp ) {
-  assert(cp >= 0 && cp <= 2*M_PI);
-  this->champs_perception = cp;
+void Oreilles::setChampsPerception( double cp ) {
+  if (cp >= 0 && cp <= 2*M_PI);
+    this->champs_perception = cp;
 }
 
-void Oreilles::setCapaciteDetection( float cd) {
-  assert(cd >= 0 && cd <= 1);
+void Oreilles::setCapaciteDetection( double cd) {
+  if (cd >= 0 && cd <= 1);
   this->capacite_detection = cd;
 }
 
+/**
+ * @brief Implémentation de la détection pour les oreilles
+ * 
+ * @param cette_bestiole la bestiole possédant les oreilles
+ * @param b la bestiole qu'on veut détecter
+ * @return true la bestiole b est détectée
+ * @return false la bestiole b n'est pas détectée
+ */
 bool Oreilles::detect(Bestiole * cette_bestiole, Bestiole* b)
 {
    double         dist;
-   dist = std::sqrt( (x-b.x)*(x-b.x) + (y-b.y)*(y-b.y) );
+   dist = std::sqrt( (cette_bestiole->getX() - b->getX())*(cette_bestiole->getX() - b->getX()) 
+   + (cette_bestiole->getY() - b->getY())*(cette_bestiole->getY() - b->getY()) );
    return ((dist <= this->distance_ecoute) &&  (rand()/RAND_MAX <= this->capacite_detection));
 }
