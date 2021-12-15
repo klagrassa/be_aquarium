@@ -24,7 +24,20 @@ Bestiole::Bestiole(IComportement *comp,
 {
    identite = ++next;
 
+
+const double      Bestiole::AFF_SIZE = 8.;
+const double      Bestiole::MAX_VITESSE = 10.;
+const double      Bestiole::LIMITE_VUE_DIST = 30.;
+const double      Bestiole::LIMITE_VUE_ANGLE = M_PI/2;
+const double      Bestiole::VUE_CAPACITY = 1;
+const double      Bestiole::EARS_CAPACITY = 1;
+const double      Bestiole::LIMITE_EARS_DIST = 10.;
+
+
+int               Bestiole::next = 0;
+
    std::cout << "const Bestiole (" << identite << ") par defaut" << this << std::endl;
+
 
    x = y = 0;
    cumulX = cumulY = 0.;
@@ -163,11 +176,22 @@ bool operator==(const Bestiole &b1, const Bestiole &b2)
    return (b1.identite == b2.identite);
 }
 
-bool Bestiole::jeTeVois(const Bestiole &b) const
+
+bool Bestiole::jeTeVois( const Bestiole & b ) const
 {
+   double         dist;
+   dist = std::sqrt( (x-b.x)*(x-b.x) + (y-b.y)*(y-b.y) );
+   bool           distance;
+   bool           angle;
+   distance = (dist <= LIMITE_VUE_DIST);
+   angle = (orientation - arctan(b.x/b.y) <= LIMITE_VUE_ANGLE);
+   return (distance &&  angle && (rand()/RAND_MAX <= VUE_CAPACITY));
+}
 
-   double dist;
+bool Bestiole::jeTentends( const Bestiole & b ) const
+{
+   double         dist;
+   dist = std::sqrt( (x-b.x)*(x-b.x) + (y-b.y)*(y-b.y) );
+   return ((dist <= LIMITE_EARS_DIST) &&  (rand()/RAND_MAX <= EARS_CAPACITY));
 
-   dist = std::sqrt((x - b.x) * (x - b.x) + (y - b.y) * (y - b.y));
-   return (dist <= LIMITE_VUE);
 }
