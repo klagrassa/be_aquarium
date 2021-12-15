@@ -6,14 +6,12 @@
 
 class Camouflage : public Accessoire {
   private:
-    float coefficient;
+    double coefficient;
 
 
   public:
     Camouflage(const Camouflage & c);
-
-    Camouflage(float coefficiant_camouflage);
-
+    Camouflage(double camouflage);
     ~Camouflage();
 
 };

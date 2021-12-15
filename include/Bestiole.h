@@ -9,15 +9,17 @@ class Accessoire;
 class Milieu;
 class IComportement;
 
-class Bestiole {
+class Bestiole
+{
   private:
-    
     double taux_clonage;
     int age;
+    int age_lim;
 
     std::vector<Capteur *> capteurs;
     std::vector<Accessoire *> accessoires;
-    std::vector<IComportement *> comportements;
+    IComportement *comportement;
+
 
 
     std::vector<Bestiole*> bestioles_environnantes;
@@ -35,37 +37,39 @@ private :
     static const double     MAX_VITESSE;
     static const double     LIMITE_VUE;
 
-    static int              next;
 
-  private :
-    int               identite;
-    int               x, y;
-    double            cumulX, cumulY;
-    double            orientation;
-    double            vitesse;
+    static int next;
 
-    T               * couleur;
 
+  private:
+    int identite;
+    int x, y;
+    double cumulX, cumulY;
+    double orientation;
+    double vitesse;
+
+    T *couleur;
 
   public:
-    Bestiole(const IComportement* comp, const Accessoire* acc, const Capteur* capteurs); 
+    Bestiole(IComportement *comp, std::vector<Accessoire *> acc, std::vector<Capteur *> capteurs);
+    Bestiole(const Bestiole &b);
     ~Bestiole();
-    Bestiole clonage(const Bestiole & bestiole);
+    Bestiole clonage(const Bestiole &bestiole);
 
-  public:
-    void action(const Milieu& milieu);
-    void draw( UImg & support );
-    bool jeTeVois( const Bestiole & b ) const;
-    void initCoords( int xLim, int yLim );
+    bool action(const Milieu &milieu);
+    void draw(UImg &support);
+    bool jeTeVois(const Bestiole &b) const;
+    void initCoords(int xLim, int yLim);
 
-  public:
     int getAge() const;
-  
-  public:
-    friend bool operator==( const Bestiole & b1, const Bestiole & b2 );
-  
-  private :
-    void bouge( int xLim, int yLim );
 
+    friend bool operator==(const Bestiole &b1, const Bestiole &b2);
+
+  private:
+    void bouge(int xLim, int yLim);
+
+  public:
+    void ajouterAccessoire(Accessoire* acc);
+    void ajouterCapteur(Capteur* cap);
 };
 #endif

@@ -6,13 +6,13 @@
 
 class Nageoires : public Accessoire {
   private:
-    float coefficient;
+    double coefficient;
 
 
   public:
     Nageoires(const Nageoires & n);
 
-    Nageoires(float coefficient_vitesse);
+    Nageoires(double coefficient_vitesse);
 
     ~Nageoires();
 
