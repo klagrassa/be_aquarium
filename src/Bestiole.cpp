@@ -31,6 +31,10 @@ Bestiole::Bestiole(IComportement *comp,
    orientation = static_cast<double>(rand()) / RAND_MAX * 2. * M_PI;
    vitesse = static_cast<double>(rand()) / RAND_MAX * MAX_VITESSE;
 
+   age_lim = rand()%100;
+
+   age = 0;
+
    this->accessoires = acc;
    this->capteurs = capteurs;
    this->comportement = comp;
@@ -131,10 +135,16 @@ void Bestiole::bouge(int xLim, int yLim)
    }
 }
 
-void Bestiole::action(const Milieu &monMilieu)
+bool Bestiole::action(const Milieu &monMilieu)
 {
-
+   bool mort = false;
+   age ++;
    bouge(monMilieu.getWidth(), monMilieu.getHeight());
+
+   if(age>=age_lim){
+      mort = true;
+   }
+   return mort;
 }
 
 void Bestiole::draw(UImg &support)

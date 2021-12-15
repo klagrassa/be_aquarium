@@ -14,6 +14,7 @@ class Bestiole
 private:
   double taux_clonage;
   int age;
+  int age_lim;
 
   std::vector<Capteur *> capteurs;
   std::vector<Accessoire *> accessoires;
@@ -38,7 +39,7 @@ public:
   ~Bestiole();
   Bestiole clonage(const Bestiole &bestiole);
 
-  void action(const Milieu &milieu);
+  bool action(const Milieu &milieu);
   void draw(UImg &support);
   bool jeTeVois(const Bestiole &b) const;
   void initCoords(int xLim, int yLim);
