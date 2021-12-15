@@ -6,19 +6,15 @@
 
 class Yeux : public Capteur {
   private:
-    float capacite_perception;
-
-    float angle_vision;
-
-    float distance_vision;
-
+    double capacite_perception;
+    double angle_vision;
+    double distance_vision;
 
   public:
     Yeux(const Yeux & y);
-
-    Yeux(float capacite_perception, float angle_vision, float distance_vision);
-
+    Yeux(double capacite_perception, double angle_vision, double distance_vision);
     ~Yeux();
+
 
 };
 #endif

@@ -114,6 +114,8 @@ double* Parametres_Sim::getLimitesDetectionYeux() {
  * 
  * @return double* tableau contenant les limites
  * taille de 2
+ * 0 = angle min
+ * 1 = angle max
  */
 double* Parametres_Sim::getLimitesDistanceAngulaireChampsVision() {
     return this->limites_angulaire_champ_vision;
@@ -122,9 +124,13 @@ double* Parametres_Sim::getLimitesDistanceAngulaireChampsVision() {
 /**
  * @brief Renvoie les limites 
  * 
- * @return double* 
+ * @return double* tableau contenant les limites
+ * 0 = distance min
+ * 1 = distance max
  */
-double* Parametres_Sim::getLimitesDistanceChampsVision() {} 
+double* Parametres_Sim::getLimitesDistanceChampsVision() {
+    return this->limites_distance_champ_vision;
+} 
 
 /**
  * @brief Renvoie le coefficient limite de vitesse pour les nageoires

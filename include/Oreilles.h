@@ -6,17 +6,17 @@
 
 class Oreilles : public Capteur {
   private:
-    float distance_ecoute;
+    double distance_ecoute;
 
-    float champs_perception;
+    double champs_perception;
 
-    float capacite_detection;
+    double capacite_detection;
 
 
   public:
     Oreilles(const Oreilles & c);
 
-    Oreilles(float distance_ecoute, float capacite_detection);
+    Oreilles(double distance_ecoute, double capacite_detection);
 
     ~Oreilles();
 

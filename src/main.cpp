@@ -14,7 +14,9 @@ int main()
    const char* s = typeid(param).name(); // works
    std::cout <<"this is : " << s << std::endl;
 
-   std::cout << "test singleton" << &param << " and " << &param2;
+   std::cout << "test singleton" << &param 
+   << " and " 
+   << &param2;
    param.setWidth(640);
    param.setHeight(480);
    param.setDelay(30);

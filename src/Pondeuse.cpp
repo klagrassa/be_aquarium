@@ -12,9 +12,15 @@
 #include "Camouflage.h"
 #include "Carapace.h"
 
+// Capteurs
+#include "Yeux.h"
+#include "Oreilles.h" 
+
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
 #include <cmath>        /* floor */
+
+// TODO implémenter le random des capteurs et tester la pondeuse
 
 /**
  * @brief Création initiale des bestioles en accord avec les 
@@ -128,6 +134,23 @@ Bestiole* Pondeuse::creerBestiole(IComportement* comp)
     }
 
     // capteurs
+    res = rand() % 2;
+    if (res == 1)
+    {
+        double cap_perception = fmod(rand(), param_sim->getLimitesDetectionYeux()[1])
+                        + param_sim->getLimitesDetectionYeux()[0];
+        double angle = fmod(rand(), param_sim->getLimitesDistanceAngulaireChampsVision()[1])
+                        + param_sim->getLimitesDistanceAngulaireChampsVision()[0];
+        double distance = fmod(rand(), param_sim->getLimitesDistanceChampsVision()[1])
+                        + param_sim->getLimitesDistanceChampsVision()[0];
+        acc.push_back(new Yeux(cap_perception, angle, distance));
+    }
+
+    res = rand() % 2;
+    if (res == 1)
+    {
+
+    }
 
     return best;
 }
