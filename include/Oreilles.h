@@ -16,5 +16,18 @@ class Oreilles : public Capteur {
     Oreilles(double distance_ecoute, double capacite_detection);
     ~Oreilles();
 
+    float getCapaciteDetection( void );
+
+    float getDistanceEcoute( void );
+
+    float getChampsPerception( void );
+
+    void setDistanceEcoute( float de );
+
+    void setChampsPerception( float cp );
+
+    void setCapaciteDetection( float cd );
+
+    bool detect(Bestiole * cette_bestiole, Bestiole* b);
 };
 #endif

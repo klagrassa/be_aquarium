@@ -27,11 +27,6 @@ Bestiole::Bestiole(IComportement *comp,
 
 const double      Bestiole::AFF_SIZE = 8.;
 const double      Bestiole::MAX_VITESSE = 10.;
-const double      Bestiole::LIMITE_VUE_DIST = 30.;
-const double      Bestiole::LIMITE_VUE_ANGLE = M_PI/2;
-const double      Bestiole::VUE_CAPACITY = 1;
-const double      Bestiole::EARS_CAPACITY = 1;
-const double      Bestiole::LIMITE_EARS_DIST = 10.;
 
 
 int               Bestiole::next = 0;
@@ -175,6 +170,8 @@ bool operator==(const Bestiole &b1, const Bestiole &b2)
 
    return (b1.identite == b2.identite);
 }
+<<<<<<< HEAD
+=======
 
 
 bool Bestiole::jeTeVois( const Bestiole & b ) const
@@ -195,3 +192,4 @@ bool Bestiole::jeTentends( const Bestiole & b ) const
    return ((dist <= LIMITE_EARS_DIST) &&  (rand()/RAND_MAX <= EARS_CAPACITY));
 
 }
+>>>>>>> 68bd5a667bf4794937c06523cdcef382121a62cd

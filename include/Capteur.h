@@ -6,7 +6,13 @@ class Bestiole;
 
 class Capteur {
   public:
-    virtual Bestiole* detect(Bestiole * & bestioles, int x, int y) = 0;
+    /**
+    * @brief Detecter une autre bestiole a l'aide du capteur
+    *
+    * @param cette_bestiole bestiole actuelle
+    * @param b bestiole a detecter
+    */
+    virtual Bestiole* detect(Bestiole * cette_bestiole, Bestiole* b) = 0;
 
 };
 #endif
