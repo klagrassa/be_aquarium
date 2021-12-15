@@ -17,6 +17,8 @@ class Aquarium : public CImgDisplay {
 
     void run(void);
 
+    Milieu & getMilieu( void ) { return *flotte; }
+
 
   private:
     Parametres_Sim * param_sim;

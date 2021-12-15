@@ -6,20 +6,16 @@
 
 class Yeux : public Capteur {
   private:
-    float capacite_perception;
-
-    float angle_vision;
-
-    float distance_vision;
-
+    double capacite_perception;
+    double angle_vision;
+    double distance_vision;
 
   public:
     Yeux(const Yeux & y);
-
-    Yeux(float capacite_perception, float angle_vision, float distance_vision);
-
+    Yeux(double capacite_perception, double angle_vision, double distance_vision);
     ~Yeux();
 
+<<<<<<< HEAD
     float getCapaciteDetection( void );
 
     float getDistanceVision( void );
@@ -33,6 +29,8 @@ class Yeux : public Capteur {
     void setCapacitePerception( float cp);
 
     bool detect(Bestiole * cette_bestiole, Bestiole* b);
+=======
+>>>>>>> 68bd5a667bf4794937c06523cdcef382121a62cd
 
 };
 #endif

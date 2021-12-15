@@ -6,10 +6,22 @@
 Oreilles::Oreilles(const Oreilles & c) {
 }
 
+<<<<<<< HEAD
 Oreilles::Oreilles(float distance_ecoute, float capacite_detection) {
   this->distance_ecoute = distance_ecoute;
   this->capacite_detection = capacite_detection;
   this->champs_perception = 2*M_PI;
+=======
+/**
+ * @brief Construct a new Oreilles:: Oreilles object
+ * 
+ * @param distance_ecoute distance d'écoute des oreilles
+ * @param capacite_detection capacité de detection
+ */
+Oreilles::Oreilles(double distance_ecoute, double capacite_detection) {
+    this->distance_ecoute = distance_ecoute;
+    this->capacite_detection = capacite_detection;
+>>>>>>> 68bd5a667bf4794937c06523cdcef382121a62cd
 }
 
 Oreilles::~Oreilles() {
