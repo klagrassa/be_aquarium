@@ -12,7 +12,8 @@
 class Parametres_Sim {
 
   private:
-    Parametres_Sim* instance = nullptr;
+
+    static Parametres_Sim *instance;
 
     // window size parameter
     int height;
@@ -51,17 +52,24 @@ class Parametres_Sim {
 
   public:
 
+    /**
+     * Ne dois pas être cloné
+     */
+    Parametres_Sim(Parametres_Sim &other) = delete;
+    /**
+     * Ne doit pas être assignable
+     */
+    void operator=(const Parametres_Sim &) = delete;
+
     ~Parametres_Sim();
 
     /**
      * @brief Renvoie un objet unique Parametres_Sim
      * 
-     * @return Parametres_Sim* singleton
+     * @return Parametres_Sim* Parametres_Sim
      */
-    static Parametres_Sim& getInstance() {
-      static Parametres_Sim instance;  // sera instancié au premier appel à getInstance()
-      return instance; 
-    }
+    
+    static Parametres_Sim* getInstance();
 
 
     // get

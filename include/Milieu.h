@@ -18,7 +18,7 @@ private:
   // Attributs liés à la simulation
   Pondeuse *pondeuse = nullptr;
   Milieu *instance = nullptr;
-  Parametres_Sim *param = nullptr;
+  Parametres_Sim *param;
 
   // Attributs liés aux bestioles
   std::vector<Bestiole *> listeBestioles;
@@ -45,5 +45,6 @@ public:
   int getHeight(void) const { return height; };
 
   void ponteInitiale(int nb_bestioles);
+  void setParametres(Parametres_Sim *param);
 };
 #endif

@@ -7,7 +7,7 @@
  * 
  * @param param Paramètres de la simulation
  */
-Aquarium::Aquarium(const Parametres_Sim & param) : CImgDisplay(), delay( param.getDelay() )
+Aquarium::Aquarium(Parametres_Sim * param) : CImgDisplay(), delay( param->getDelay() )
 {
 
    int         screenWidth = 1280; //screen_width();
@@ -16,10 +16,11 @@ Aquarium::Aquarium(const Parametres_Sim & param) : CImgDisplay(), delay( param.g
 
    std::cout << "const Aquarium" << std::endl;
 
-   flotte = new Milieu(param.getWidth(), param.getHeight());
+   flotte = new Milieu(param->getWidth(), param->getHeight());
+   flotte->setParametres(param);
    assign( *flotte, "Simulation d'ecosysteme");
 
-   move( static_cast<int>((screenWidth-param.getWidth())/2), static_cast<int>((screenHeight-param.getHeight())/2) );
+   move( static_cast<int>((screenWidth-param->getWidth())/2), static_cast<int>((screenHeight-param->getHeight())/2) );
 }
 
 /**

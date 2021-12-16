@@ -39,7 +39,14 @@ std::vector<Bestiole *> Pondeuse::creerBestioles(int nb_bestioles)
     std::vector<Bestiole *> bestioles_initiales;
 
     //faire une boucle for pour instancier chaque élément !
-    std::vector<double> proportions = param_sim->getProportions();
+    std::vector<double> proportions;
+    auto test = param_sim->getProportions();
+    for (auto it = param_sim->getProportions().begin(); 
+            it != param_sim->getProportions().end();
+            ++it)
+    {
+        proportions.push_back(*it);
+    }
 
     // Génération des bestioles par comportement
     if ((proportions[0] * (nb_bestioles - 1)) > 0)
@@ -181,8 +188,11 @@ Bestiole *Pondeuse::creerBestiole(IComportement *comp)
  */
 Pondeuse::Pondeuse(Parametres_Sim *param)
 {
-    if (param != nullptr)
+    if (param == nullptr)
+    {
         this->param_sim = param;
+    }
+        
 }
 
 /**

@@ -2,6 +2,20 @@
 #include "Parametres_Sim.h"
 
 
+Parametres_Sim* Parametres_Sim::instance = nullptr;
+
+/**
+ * @brief Renvoie une instance de paramètres sim
+ * 
+ * @return Parametres_Sim* 
+ */
+Parametres_Sim* Parametres_Sim::getInstance()
+{
+    if (instance == nullptr)
+        instance = new Parametres_Sim();
+    return instance;
+}
+
 /**
  * @brief Construct a new Parametres_Sim::Parametres_Sim object
  * 
@@ -13,6 +27,7 @@ Parametres_Sim::Parametres_Sim() {}
  * 
  */
 Parametres_Sim::~Parametres_Sim() {}
+
 
 // get / set operators
 

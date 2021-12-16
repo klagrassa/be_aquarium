@@ -9,9 +9,9 @@
 
 int main()
 {
-   Parametres_Sim param = Parametres_Sim::getInstance();
-   Parametres_Sim param2 = Parametres_Sim::getInstance();
-   double proportions[NB_COMPORTEMENTS] = 
+   Parametres_Sim *param = Parametres_Sim::getInstance();
+
+   std::vector<double> proportions = 
    {
       0.4,
       0,
@@ -19,17 +19,14 @@ int main()
       0.6,
       0
    };
-   const char* s = typeid(param).name(); // works
-   std::cout <<"this is : " << s << std::endl;
+   //const char* s = typeid(param).name(); // works
+   //std::cout <<"this is : " << s << std::endl;
 
-   std::cout << "test singleton" << &param 
-   << " and " 
-   << &param2;
-   param.setWidth(640);
-   param.setHeight(480);
-   param.setDelay(30);
+   param->setWidth(640);
+   param->setHeight(480);
+   param->setDelay(30);
 
-   param.setProportions(proportions);
+   param->setProportions(proportions);
 
    Aquarium ecosysteme(param);
 

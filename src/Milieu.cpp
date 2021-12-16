@@ -90,4 +90,13 @@ void Milieu::ponteInitiale(int nb_bestioles)
       this->listeBestioles = this->pondeuse->creerBestioles(nb_bestioles);
 }
 
+/**
+ * @brief Etablit les paramètres pour le milieu
+ * 
+ * @param param 
+ */
+void Milieu::setParametres(Parametres_Sim *parametre)
+{
+   this->param = parametre;
+}
 
