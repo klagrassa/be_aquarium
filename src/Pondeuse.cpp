@@ -188,10 +188,9 @@ Bestiole *Pondeuse::creerBestiole(IComportement *comp)
  */
 Pondeuse::Pondeuse(Parametres_Sim *param)
 {
-    if (param == nullptr)
-    {
-        this->param_sim = param;
-    }
+
+    this->param_sim = param;
+
         
 }
 

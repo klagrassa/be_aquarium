@@ -78,7 +78,8 @@ double* Parametres_Sim::getLimitesCarapaces()
 {
     double res[2] = {this->limites_carapace_ralentissement,
                     this->limites_carapace_mort};
-    return res; 
+    double* test = res;
+    return test;
 }
 
 /**
@@ -311,7 +312,7 @@ void Parametres_Sim::setProportions(std::vector<double> prop)
 void Parametres_Sim::setLimitesCarapace(double ralentissement_max, double mort)
 {
     if (ralentissement_max >= 1)
-        this->limites_carapace_ralentissement;
+        this->limites_carapace_ralentissement = ralentissement_max;
     if (mort >= 1)
-        this->limites_carapace_mort;
+        this->limites_carapace_mort = mort;
 }

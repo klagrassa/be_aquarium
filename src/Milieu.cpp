@@ -2,6 +2,7 @@
 #include "../include/Milieu.h"
 #include "../include/Bestiole.h"
 #include "../include/Pondeuse.h"
+#include "../include/Parametres_Sim.h"
 
 const T Milieu::white[] = {255,255,255};
 
@@ -20,7 +21,7 @@ Milieu::Milieu( int _width, int _height ): UImg( _width, _height, 1, 3 ),
    std::srand( time(NULL) );
 
    // création de la pondeuse
-   this->pondeuse = new Pondeuse(this->param);
+   //this->pondeuse = new Pondeuse(this->param);
 
 }
 
@@ -86,6 +87,7 @@ void Milieu::addMember(Bestiole* b) {
 
 void Milieu::ponteInitiale(int nb_bestioles)
 {
+   this->pondeuse = new Pondeuse(this->param);
    if (nb_bestioles > 0)
       this->listeBestioles = this->pondeuse->creerBestioles(nb_bestioles);
 }

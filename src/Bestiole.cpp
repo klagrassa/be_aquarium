@@ -3,6 +3,7 @@
 #include "Capteur.h"
 #include "Accessoire.h"
 #include "Milieu.h"
+#include "IComportement.h"
 
 #include "Constants.h"
 
@@ -31,7 +32,8 @@ Bestiole::Bestiole(IComportement *comp,
    orientation = static_cast<double>(rand()) / RAND_MAX * 2. * M_PI;
    vitesse = static_cast<double>(rand()) / RAND_MAX * MAX_VITESSE;
 
-   age_lim = rand() % 100;
+   age_lim = rand() % 300;
+   std::cout<<"age lim : "<<age_lim<<std::endl;
 
    age = 0;
 
@@ -188,6 +190,7 @@ void Bestiole::bouge(int xLim, int yLim)
       y = static_cast<int>(ny);
       cumulY += ny - y;
    }
+   std::cout<<"position de "<<this<<" : "<<x<<" "<<y<<std::endl;
 }
 
 bool Bestiole::action(const Milieu &monMilieu)
