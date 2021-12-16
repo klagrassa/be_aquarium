@@ -8,10 +8,10 @@ const T Milieu::white[] = {255,255,255};
 
 //Renvoie les bestioles clon�es. Le clonage ne se fait uniquement que si le taux de clonage de la bestiole est inf�rieur au taux de clonage donn�
 //en param�tre.
-std::vector<Bestiole*> Milieu::verifier_clonage(const Bestiole* & bestioles, double taux_clonage) {
+/* std::vector<Bestiole*> Milieu::verifier_clonage(const Bestiole* & bestioles, double taux_clonage) {
 
 }
-
+ */
 Milieu::Milieu( int _width, int _height ): UImg( _width, _height, 1, 3 ),
                                             width(_width), height(_height)
 {
@@ -38,6 +38,7 @@ void Milieu::step( void )
    cimg_forXY( *this, x, y ) fillC( x, y, 0, white[0], white[1], white[2] );
    for ( std::vector<Bestiole*>::iterator it = listeBestioles.begin() ; it != listeBestioles.end() ; ++it )
    {
+      // Vérifier si la bestiole est morte, sinon la tuer
       if((*it)->action( *this )){
          delete *it;
          listeBestioles.erase(it);

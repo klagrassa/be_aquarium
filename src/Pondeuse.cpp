@@ -40,9 +40,9 @@ std::vector<Bestiole *> Pondeuse::creerBestioles(int nb_bestioles)
 
     //faire une boucle for pour instancier chaque élément !
     std::vector<double> proportions;
-    auto test = param_sim->getProportions();
-    for (auto it = param_sim->getProportions().begin(); 
-            it != param_sim->getProportions().end();
+    auto prop_sim = param_sim->getProportions();
+    for (auto it = prop_sim.begin(); 
+            it != prop_sim.end();
             ++it)
     {
         proportions.push_back(*it);

@@ -96,9 +96,10 @@ Bestiole::~Bestiole(void)
  * @param bestiole
  * @return Bestiole
  */
-Bestiole Bestiole::clonage(const Bestiole &bestiole)
+/* Bestiole Bestiole::clonage(const Bestiole &bestiole)
 {
-}
+   return ;
+} */
 
 /**
  * @brief Renvoie l'âge actuel de la bestiole
