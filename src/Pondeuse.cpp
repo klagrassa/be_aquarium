@@ -27,49 +27,69 @@
 #include <time.h>   /* time */
 #include <cmath>    /* floor */
 
-
 /**
  * @brief Création initiale des bestioles en accord avec les
  * proportions indiquées dans les paramètres de simulation
  *
  * @param nb_bestioles nombre de bestioles totales à générer
- * @return std::vector<Bestiole> 
+ * @return std::vector<Bestiole>
  */
-std::vector<Bestiole*> Pondeuse::creerBestioles(int nb_bestioles)
+std::vector<Bestiole *> Pondeuse::creerBestioles(int nb_bestioles)
 {
-    std::vector<Bestiole* > bestioles_initiales;
+    std::vector<Bestiole *> bestioles_initiales;
+
+    //faire une boucle for pour instancier chaque élément !
     std::vector<double> proportions = param_sim->getProportions();
 
     // Génération des bestioles par comportement
-    for (int i = 0; i < int(proportions[0] * (nb_bestioles - 1)); i++)
+    if ((proportions[0] * (nb_bestioles - 1)) > 0)
     {
-        Gregaire *comp = new Gregaire();
-        bestioles_initiales.push_back(
-            (creerBestiole(comp)));
+        for (int i = 0; i < int(proportions[0] * (nb_bestioles - 1)); i++)
+        {
+            Gregaire *comp = new Gregaire();
+            bestioles_initiales.push_back(
+                (creerBestiole(comp)));
+        }
     }
-    for (int i = 0; i < int(proportions[1] * (nb_bestioles - 1)); i++)
+
+    if ((proportions[1] * (nb_bestioles - 1)) > 0)
     {
-        Kamikaze *comp = new Kamikaze();
-        bestioles_initiales.push_back(
-            (creerBestiole(comp)));
+        for (int i = 0; i < int(proportions[1] * (nb_bestioles - 1)); i++)
+        {
+            Kamikaze *comp = new Kamikaze();
+            bestioles_initiales.push_back(
+                (creerBestiole(comp)));
+        }
     }
-    for (int i = 0; i < int(proportions[2] * (nb_bestioles - 1)); i++)
+
+    if ((proportions[2] * (nb_bestioles - 1)) > 0)
     {
-        Peureux *comp = new Peureux();
-        bestioles_initiales.push_back(
-            (creerBestiole(comp)));
+        for (int i = 0; i < int(proportions[2] * (nb_bestioles - 1)); i++)
+        {
+            Peureux *comp = new Peureux();
+            bestioles_initiales.push_back(
+                (creerBestiole(comp)));
+        }
     }
-    for (int i = 0; i < int(proportions[3] * (nb_bestioles - 1)); i++)
+    
+    if ((proportions[3] * (nb_bestioles - 1)) > 0)
     {
-        Prevoyant *comp = new Prevoyant();
-        bestioles_initiales.push_back(
-            (creerBestiole(comp)));
+        for (int i = 0; i < int(proportions[3] * (nb_bestioles - 1)); i++)
+        {
+            Prevoyant *comp = new Prevoyant();
+            bestioles_initiales.push_back(
+                (creerBestiole(comp)));
+        }
     }
-    for (int i = 0; i < int(proportions[4] * (nb_bestioles - 1)); i++)
+
+    if ((proportions[4] * (nb_bestioles - 1)) > 0)
     {
-        Multiple *comp = new Multiple();
-        bestioles_initiales.push_back(
-            (creerBestiole(comp)));
+        for (int i = 0; i < int(proportions[4] * (nb_bestioles - 1)); i++)
+        {
+            Multiple *comp = new Multiple();
+            bestioles_initiales.push_back(
+                (creerBestiole(comp)));
+        }
     }
     return bestioles_initiales;
 }
@@ -96,7 +116,6 @@ Bestiole *Pondeuse::creerBestiole(IComportement *comportement, std::vector<Acces
  */
 Bestiole *Pondeuse::creerBestiole(IComportement *comp)
 {
-    Bestiole *best;
     // Génération des accessoires
     std::vector<Accessoire *> acc;
     // Génération des capteurs
@@ -151,21 +170,7 @@ Bestiole *Pondeuse::creerBestiole(IComportement *comp)
         cap.push_back(new Oreilles(distance, cap_perception));
     }
 
-    // Assigner les accessoires à la bestiole
-    if (!acc.empty())
-    {
-        for (auto it = acc.begin(); it != acc.end(); ++it)
-            best->ajouterAccessoire(*it);
-    }
-
-    // Assigner les capteurs à la bestiole
-    if (!cap.empty())
-    {
-        for (auto it = cap.begin(); it != cap.end(); ++it)
-            best->ajouterCapteur(*it);
-    }
-
-    return best;
+    return new Bestiole(comp, acc, cap);
 }
 
 /**

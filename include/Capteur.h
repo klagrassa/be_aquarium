@@ -14,5 +14,7 @@ class Capteur {
     */
     virtual bool detect(Bestiole * cette_bestiole, Bestiole* b) = 0;
 
+    virtual ~Capteur() = 0;
+
 };
 #endif

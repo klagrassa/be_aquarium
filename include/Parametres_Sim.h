@@ -3,6 +3,7 @@
 
 #include <map>
 #include <vector>
+#include "Constants.h"
 
 /**
  * @brief This class contains simulation parameters
@@ -92,7 +93,7 @@ class Parametres_Sim {
     void setLimitesDetectionYeux(double detec_min, double detec_max);
     void setLimitesDistanceChampsVision(double distance_min, double distance_max);
     void setLimitesDistanceAngulaireChampsVision(double angle_min, double angle_max);
-    void setProportions(std::vector<double> proportions);
+    void setProportions(std::vector<double> prop);
 
 };
 

@@ -279,9 +279,12 @@ void Parametres_Sim::setLimitesDistanceAngulaireChampsVision(double angle_min, d
  * 
  * @param proportions vector de double, la somme doit être égale à 1
  */
-void Parametres_Sim::setProportions(std::vector<double> proportions)
+void Parametres_Sim::setProportions(std::vector<double> prop)
 {
-    this->proportions = proportions;
+    for (auto it = prop.begin(); it != prop.end(); ++it)
+    {
+        this->proportions.push_back(*it);
+    }
 }
 
 /**
