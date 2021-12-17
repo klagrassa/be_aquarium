@@ -32,6 +32,7 @@ Bestiole::Bestiole(IComportement *comp,
    orientation = static_cast<double>(rand()) / RAND_MAX * 2. * M_PI;
    vitesse = static_cast<double>(rand()) / RAND_MAX * MAX_VITESSE;
 
+   srand(time(NULL));
    age_lim = rand() % 300;
    std::cout<<"age lim : "<<age_lim<<std::endl;
 

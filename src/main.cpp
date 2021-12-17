@@ -31,7 +31,7 @@ int main()
    Aquarium ecosysteme(param);
 
    // Génération des bestioles
-   ecosysteme.getMilieu().ponteInitiale(5);
+   ecosysteme.getMilieu().ponteInitiale(10);
 
    std::cout << "start"; // debug point
 

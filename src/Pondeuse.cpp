@@ -53,6 +53,7 @@ std::vector<Bestiole *> Pondeuse::creerBestioles(int nb_bestioles)
     {
         for (int i = 0; i < int(proportions[0] * (nb_bestioles - 1)); i++)
         {
+            sleep(1);
             Gregaire *comp = new Gregaire();
             bestioles_initiales.push_back(
                 (creerBestiole(comp)));
@@ -63,6 +64,7 @@ std::vector<Bestiole *> Pondeuse::creerBestioles(int nb_bestioles)
     {
         for (int i = 0; i < int(proportions[1] * (nb_bestioles - 1)); i++)
         {
+            sleep(1);
             Kamikaze *comp = new Kamikaze();
             bestioles_initiales.push_back(
                 (creerBestiole(comp)));
@@ -73,6 +75,7 @@ std::vector<Bestiole *> Pondeuse::creerBestioles(int nb_bestioles)
     {
         for (int i = 0; i < int(proportions[2] * (nb_bestioles - 1)); i++)
         {
+            sleep(1);
             Peureux *comp = new Peureux();
             bestioles_initiales.push_back(
                 (creerBestiole(comp)));
@@ -83,6 +86,7 @@ std::vector<Bestiole *> Pondeuse::creerBestioles(int nb_bestioles)
     {
         for (int i = 0; i < int(proportions[3] * (nb_bestioles - 1)); i++)
         {
+            sleep(1);
             Prevoyant *comp = new Prevoyant();
             bestioles_initiales.push_back(
                 (creerBestiole(comp)));
@@ -93,6 +97,7 @@ std::vector<Bestiole *> Pondeuse::creerBestioles(int nb_bestioles)
     {
         for (int i = 0; i < int(proportions[4] * (nb_bestioles - 1)); i++)
         {
+            sleep(1);
             Multiple *comp = new Multiple();
             bestioles_initiales.push_back(
                 (creerBestiole(comp)));
